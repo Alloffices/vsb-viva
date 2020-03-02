@@ -6,7 +6,7 @@ ruby '2.6.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use sqlite3 as the database for Active Record
-
+  gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 gem 'activeadmin'
@@ -46,10 +46,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-group :production do 
-  gem 'rails_12factor'
-  gem 'pg'
-end
+
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
