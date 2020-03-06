@@ -1,4 +1,173 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ <banner class="banners">
+  <%= image_tag("dots_red.svg", class:"banner-dots dt", alt: "triangle made of red dots") %>
+  <%= image_tag("homepage_banner.png", class:"banner-img", alt: "triangle made of red dots") %>
+  <%= image_tag("dots.svg", class:"banner-img-1 dt", alt: "triangle made of red dots") %>
+</banner> 
+<main class="content" id="content">
+<div class="section">
+  <div class="content-contain">
+    <div class="intro-container">
+      <h1>A New Name <br class="mb">in Primary Care</h1>
+      <p class="subtitle">Provided by established and respected community physicians.</p>
+      <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS90ZWw6MTg1NTkxMDYyMjQ" class="styled-link alt">Speak with us <span>1-855-910-6224</span></a>
+      <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS8#" class="styled-link request-appointment" data-title="Request an Appointment" data-location="" data-county="" data-physician="" data-action="request_appointment">Request an Appointment</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="location-map dt" aria-label="image of the United States map on blue with Florida and Texas states indicated on orange" style="background-image: url(<%= asset_path 'full-map.svg' %>);"></div>
+  <div class="content-contain">
+    <div class="sub-section">
+      <form method="post" action="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zLyNzZWFyY2gtcmVzdWx0cw" id="search-form">
+        <input type="hidden" name="webproxy_is_original_get" value="1">
+        <input type="hidden" name="lat">
+        <input type="hidden" name="lng">
+        <input type="hidden" name="CsrfToken" value="21cd8c345d28f9ba6a788c9efffb36231b5ae9349fd2f90527d998de9410566d">
+        <fieldset class="row">
+          <legend><h2>Physicians &amp; Locations</h2></legend>
+          <input type="radio" name="search_by" value="physicians" id="search_by_physician"><label for="search_by_physician">Search Our Physicians</label>
+          <input type="radio" name="search_by" value="locations" id="search_by_location" checked="checked"><label for="search_by_location">Search Our Locations</label>
+        </fieldset>
+        <input id="rockport-lookup" type="text" name="address" aria-label="Enter Address, City, or Zip Code" data-placeholder-locations="Enter Address, City, or Zip Code" data-placeholder-physicians="Enter Physician Name, Address, City, or Zip Code" placeholder="Enter Address, City, or Zip Code">
+        <button onclick="rockPort()" class="styled-link selected nearest-locations" data-text-locations="Search Locations" data-text-physicians="Search Physicians">Search Locations</button>
+      </form>
+      <button class="styled-link current-locations modal-locations">Search by Current Location</button>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="content-contain">
+    <div class="sub-section">
+      <p class="subtitle">We are reinventing excellence in healthcare with a simple idea - that meaningful patient relationships lead to better health outcomes.</p>
+    </div>
+    <div class="sub-section">
+      <p>Our shared goal is for our patients to reach their fullest potential while always feeling respected, understood, and cared for.</p>
+      <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9hYm91dA" class="styled-link">More About Us</a>
+      <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS8#" data-location="" data-county="" data-physician="" data-action="tour" class="styled-link request-appointment" data-title="Request a Tour">Request a Tour</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="content-contain">
+    <div class="sub-section second-bg">
+      <h2>We Are Here to Serve</h2>
+      <p class="services-intro">Each community that hosts a Conviva Care Center carries our dedication to its members that we have the privilege to call our patients. Conviva represents a commitment to the highest standards of medical care–starting with primary care and extending throughout each patient’s healthcare experience, including specialists, in house services, transportation and much more…</p>
+      <div class="flexslider-services slides" id="flexslider-services">
+        <div class="flex-nav-prev slick-arrow" style=""><span class="flex-prev"></span></div>
+        <div class="slick-list draggable">
+          <div class="slick-track" style="opacity: 1; width: 10098px; transform: translate3d(-5236px, 0px, 0px); transition: transform 500ms ease 0s;">
+            <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jbGFiLWRyYXdpbmctc3RhdGlvbnM" tabindex="-1">
+                <%= image_tag("icons-11.svg",alt: "Lab Drawing Stations icon") %>
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTExLnN2Zw" alt="Lab Drawing Stations icon"> -->
+                <h3>Lab Drawing<br>Stations</h3>
+              </a>
+            </div>
+            <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jbmVidWxpemVyLXRyZWF0bWVudHM" tabindex="-1">
+                <%= image_tag("icons-19.svg",alt: "Nebulizer Treatments icon") %>
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTE5LnN2Zw" alt="Nebulizer Treatments icon"> -->
+                <h3>Nebulizer<br>Treatments</h3>
+              </a>
+            </div>
+            <div class="slick-slide slick-active" data-slick-index="2" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jdHJhbnNwb3J0YXRpb24" tabindex="-1">
+                <%= image_tag("icons-02.svg",alt: "Transportation icon") %>
+                
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTAyLnN2Zw" alt="Transportation icon"> -->
+                <h3>Transportation</h3>
+              </a>
+            </div>
+            <div class="slick-slide" data-slick-index="4" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jcHJpbWFyeS1jYXJlLXBoeXNpY2lhbnM" tabindex="-1">
+                <%= image_tag("icons-01.svg",alt: "Primary Care Physicians icon") %>
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTAxLnN2Zw" alt="Primary Care Physicians icon">-->          
+                <h3>Primary Care<br>Physicians</h3>
+              </a>
+            </div>
+            <div class="slick-slide" data-slick-index="5" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jd291bmQtY2FyZQ" tabindex="-1">
+                <%= image_tag("icons-12.svg",alt: "Wound Care icon") %>
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTEyLnN2Zw" alt="Wound Care icon"> -->
+                <h3>Wound<br>Care</h3>
+              </a>
+            </div>
+            <div class="slick-slide" data-slick-index="6" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jZmx1LXBuZXVtb25pYQ" tabindex="-1">
+                <%= image_tag("icons-13.svg",alt: "Flu &amp; Pneumonia icon") %>
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTEzLnN2Zw" alt="Flu &amp; Pneumonia icon"> -->
+                <h3>Flu &amp; Pneumonia<br>Vaccines</h3>
+              </a>
+            </div>
+            <div class="slick-slide" data-slick-index="7" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jZWtn" tabindex="-1">
+                <%= image_tag("icons-14.svg",alt: "EKG icon") %>
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTE0LnN2Zw" alt="EKG icon"> -->
+                <h3>EKG<br></h3>
+              </a>
+            </div>
+            <div class="slick-slide" data-slick-index="8" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jcGh5c2ljYWwtZXhhbWluYXRpb25z" tabindex="-1">
+                <%= image_tag("icons-15.svg",alt: "Physical Examinations icon") %>
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTE1LnN2Zw" alt="Physical Examinations icon"> -->
+                <h3>Physical<br>Examinations</h3>
+              </a>
+            </div>
+            <div class="slick-slide" data-slick-index="9" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jbWlub3ItcHJvY2VkdXJlcw" tabindex="-1">
+                <%= image_tag("icons-20.svg",alt: "Minor Procedures icon") %>
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTIwLnN2Zw" alt="Minor Procedures icon"> -->
+                <h3>Minor<br>Procedures</h3>
+              </a>
+            </div>
+            <div class="slick-slide" data-slick-index="10" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jc3V0dXJlLXJlbW92YWw" tabindex="-1">
+                <%= image_tag("icons-18.svg",alt: "Suture &amp; Suture Removal icon") %>
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTE4LnN2Zw" alt="Suture &amp; Suture Removal icon"> -->
+                <h3>Suture &amp;<br>Suture Removal</h3>
+              </a>
+            </div>
+            <div class="slick-slide" data-slick-index="11" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jZGlhYmV0aWMtZWR1Y2F0aW9u" tabindex="-1">
+                <%= image_tag("icons-16.svg",alt: "Diabetic Education icon") %>
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTE2LnN2Zw" alt="Diabetic Education icon"> -->
+                <h3>Diabetic<br>Education</h3>
+              </a>
+            </div>
+            <div class="slick-slide" data-slick-index="12" aria-hidden="true" style="width: 324px;" tabindex="-1">
+              <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8jZWFyLWxhdmFnZQ" tabindex="-1">
+                <%= image_tag("icons-17.svg",alt: "Ear Lavage icon") %>
+                <!-- <img src="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9pbWFnZXMvY3VzdG9tX2ljb25zL2ljb25zLTE3LnN2Zw" alt="Ear Lavage icon"> -->
+                <h3>Ear<br>Lavage</h3>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="flex-nav-next slick-arrow" style=""><span class="flex-next"></span></div>
+      </div>
+      <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9zZXJ2aWNlcy8" class="styled-link">View All</a>
+      <p>Services vary by location.</p>
+    </div>
+  </div>
+</div> 
+<!-- Conditionals for search RP -->
+<script type="text/javascript">
+    function rockPort() {
+        let ping = document.querySelector('input#rockport-lookup');
+        if ( ping.value == "rockport" || ping.value === "Rockport" ) {
+            document.querySelector('input#rockport-lookup').value = "City Rockport";
+        }
+        if ( ping.value == "eighth street" || ping.value == "Eighth Street" || ping.value == "8th") {
+            document.querySelector('input#rockport-lookup').value = "Conviva Care Center Eighth Street";
+        }
+        if ( ping.value == "flagler" || ping.value == "Flagler") {
+            document.querySelector('input#rockport-lookup').value = "Conviva Care Center Flagler";
+        }
+    }
+</script>
+<div class="shadow"></div>
+</main>
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,4 +197,4 @@
         </ul>
         
       </div>
-    </nav>
+    </nav> -->
