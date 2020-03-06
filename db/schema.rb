@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_202205) do
+ActiveRecord::Schema.define(version: 2020_03_05_221438) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -34,6 +34,133 @@ ActiveRecord::Schema.define(version: 2020_03_03_202205) do
     t.string "time"
     t.string "notes"
     t.integer "contacted_via", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "center_docotrs", force: :cascade do |t|
+    t.integer "doctor_id", null: false
+    t.integer "center_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["center_id"], name: "index_center_docotrs_on_center_id"
+    t.index ["doctor_id"], name: "index_center_docotrs_on_doctor_id"
+  end
+
+  create_table "center_doctors", force: :cascade do |t|
+    t.integer "doctor_id", null: false
+    t.integer "center_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["center_id"], name: "index_center_doctors_on_center_id"
+    t.index ["doctor_id"], name: "index_center_doctors_on_doctor_id"
+  end
+
+  create_table "center_events", force: :cascade do |t|
+    t.integer "center_id", null: false
+    t.string "title"
+    t.integer "approved", default: 0
+    t.date "start_date"
+    t.date "end_date"
+    t.string "description"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["center_id"], name: "index_center_events_on_center_id"
+  end
+
+  create_table "center_services", force: :cascade do |t|
+    t.integer "center_id", null: false
+    t.integer "service_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["center_id"], name: "index_center_services_on_center_id"
+    t.index ["service_id"], name: "index_center_services_on_service_id"
+  end
+
+  create_table "center_specialities", force: :cascade do |t|
+    t.integer "center_id", null: false
+    t.integer "speciality_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["center_id"], name: "index_center_specialities_on_center_id"
+    t.index ["speciality_id"], name: "index_center_specialities_on_speciality_id"
+  end
+
+  create_table "centers", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id", null: false
+    t.string "address_1"
+    t.string "address_2"
+    t.string "city"
+    t.string "state"
+    t.integer "zip_code"
+    t.string "county"
+    t.string "primary_phone"
+    t.string "additional_phones"
+    t.string "fax"
+    t.integer "pharmacy"
+    t.integer "humana"
+    t.time "monday_hours"
+    t.time "tuesday_hours"
+    t.time "wednesday_hours"
+    t.time "thursday_hours"
+    t.time "friday_hours"
+    t.time "saturday_hours"
+    t.time "sunday_hours"
+    t.time "special_hours"
+    t.string "lat"
+    t.string "lng"
+    t.string "calendar_notes"
+    t.string "approved_calendar_notes"
+    t.integer "monday_ext_hours"
+    t.integer "tuesday_ext_hours"
+    t.integer "wednesday_ext_hours"
+    t.integer "thursday_ext_hours"
+    t.integer "friday_ext_hours"
+    t.integer "saturday_ext_hours"
+    t.integer "sunday_ext_hours"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_centers_on_user_id"
+  end
+
+  create_table "doctor_insurances", force: :cascade do |t|
+    t.integer "doctor_id", null: false
+    t.integer "insurance_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_doctor_insurances_on_doctor_id"
+    t.index ["insurance_id"], name: "index_doctor_insurances_on_insurance_id"
+  end
+
+  create_table "doctor_specialities", force: :cascade do |t|
+    t.integer "doctor_id", null: false
+    t.integer "speciality_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_doctor_specialities_on_doctor_id"
+    t.index ["speciality_id"], name: "index_doctor_specialities_on_speciality_id"
+  end
+
+  create_table "doctor_types", force: :cascade do |t|
+    t.integer "doctor_id", null: false
+    t.integer "physician_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_doctor_types_on_doctor_id"
+    t.index ["physician_type_id"], name: "index_doctor_types_on_physician_type_id"
+  end
+
+  create_table "doctors", force: :cascade do |t|
+    t.string "name"
+    t.integer "language"
+    t.string "education"
+    t.string "certifications"
+    t.string "biography"
+    t.string "video_id"
+    t.string "headshot_yext"
+    t.string "headshot_source"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -87,6 +214,9 @@ ActiveRecord::Schema.define(version: 2020_03_03_202205) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -99,4 +229,20 @@ ActiveRecord::Schema.define(version: 2020_03_03_202205) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "center_docotrs", "centers"
+  add_foreign_key "center_docotrs", "doctors"
+  add_foreign_key "center_doctors", "centers"
+  add_foreign_key "center_doctors", "doctors"
+  add_foreign_key "center_events", "centers"
+  add_foreign_key "center_services", "centers"
+  add_foreign_key "center_services", "services"
+  add_foreign_key "center_specialities", "centers"
+  add_foreign_key "center_specialities", "specialities"
+  add_foreign_key "centers", "users"
+  add_foreign_key "doctor_insurances", "doctors"
+  add_foreign_key "doctor_insurances", "insurances"
+  add_foreign_key "doctor_specialities", "doctors"
+  add_foreign_key "doctor_specialities", "specialities"
+  add_foreign_key "doctor_types", "doctors"
+  add_foreign_key "doctor_types", "physician_types"
 end

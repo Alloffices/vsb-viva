@@ -1,0 +1,69 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  user: one
+  address_1: MyString
+  address_2: MyString
+  city: MyString
+  state: MyString
+  zip_code: 1
+  county: MyString
+  primary_phone: MyString
+  additional_phones: MyString
+  fax: MyString
+  pharmacy: 1
+  humana: 1
+  monday_hours: 2020-03-05 23:33:54
+  tuesday_hours: 2020-03-05 23:33:54
+  wednesday_hours: 2020-03-05 23:33:54
+  thursday_hours: 2020-03-05 23:33:54
+  friday_hours: 2020-03-05 23:33:54
+  saturday_hours: 2020-03-05 23:33:54
+  sunday_hours: 2020-03-05 23:33:54
+  special_hours: 2020-03-05 23:33:54
+  lat: MyString
+  lng: MyString
+  calendar_notes: MyString
+  approved_calendar_notes: MyString
+  monday_ext_hours: 1
+  tuesday_ext_hours: 1
+  wednesday_ext_hours: 1
+  thursday_ext_hours: 1
+  friday_ext_hours: 1
+  saturday_ext_hours: 1
+  sunday_ext_hours: 1
+
+two:
+  name: MyString
+  user: two
+  address_1: MyString
+  address_2: MyString
+  city: MyString
+  state: MyString
+  zip_code: 1
+  county: MyString
+  primary_phone: MyString
+  additional_phones: MyString
+  fax: MyString
+  pharmacy: 1
+  humana: 1
+  monday_hours: 2020-03-05 23:33:54
+  tuesday_hours: 2020-03-05 23:33:54
+  wednesday_hours: 2020-03-05 23:33:54
+  thursday_hours: 2020-03-05 23:33:54
+  friday_hours: 2020-03-05 23:33:54
+  saturday_hours: 2020-03-05 23:33:54
+  sunday_hours: 2020-03-05 23:33:54
+  special_hours: 2020-03-05 23:33:54
+  lat: MyString
+  lng: MyString
+  calendar_notes: MyString
+  approved_calendar_notes: MyString
+  monday_ext_hours: 1
+  tuesday_ext_hours: 1
+  wednesday_ext_hours: 1
+  thursday_ext_hours: 1
+  friday_ext_hours: 1
+  saturday_ext_hours: 1
+  sunday_ext_hours: 1

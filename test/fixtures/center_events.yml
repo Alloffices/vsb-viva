@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  center: one
+  title: MyString
+  approved: 1
+  start_date: 2020-03-06
+  end_date: 2020-03-06
+  description: MyString
+  image: MyString
+
+two:
+  center: two
+  title: MyString
+  approved: 1
+  start_date: 2020-03-06
+  end_date: 2020-03-06
+  description: MyString
+  image: MyString
