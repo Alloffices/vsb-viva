@@ -9,5 +9,6 @@ class Doctor < ApplicationRecord
 
 	has_many :doctor_insurances , dependent: :destroy
 	has_many :insurances ,through: :doctor_insurances
-
+	
+	accepts_nested_attributes_for :doctor_specialities ,:doctor_types ,:doctor_insurances , allow_destroy: true
 end
