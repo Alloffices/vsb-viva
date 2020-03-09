@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_221438) do
+ActiveRecord::Schema.define(version: 2020_03_09_194715) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -36,15 +36,6 @@ ActiveRecord::Schema.define(version: 2020_03_05_221438) do
     t.integer "contacted_via", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "center_docotrs", force: :cascade do |t|
-    t.integer "doctor_id", null: false
-    t.integer "center_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["center_id"], name: "index_center_docotrs_on_center_id"
-    t.index ["doctor_id"], name: "index_center_docotrs_on_doctor_id"
   end
 
   create_table "center_doctors", force: :cascade do |t|
@@ -93,8 +84,6 @@ ActiveRecord::Schema.define(version: 2020_03_05_221438) do
     t.string "address_1"
     t.string "address_2"
     t.string "city"
-    t.string "state"
-    t.integer "zip_code"
     t.string "county"
     t.string "primary_phone"
     t.string "additional_phones"
@@ -109,8 +98,6 @@ ActiveRecord::Schema.define(version: 2020_03_05_221438) do
     t.time "saturday_hours"
     t.time "sunday_hours"
     t.time "special_hours"
-    t.string "lat"
-    t.string "lng"
     t.string "calendar_notes"
     t.string "approved_calendar_notes"
     t.integer "monday_ext_hours"
@@ -122,7 +109,11 @@ ActiveRecord::Schema.define(version: 2020_03_05_221438) do
     t.integer "sunday_ext_hours"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "region_id"
+    t.integer "zip_code_id"
+    t.index ["region_id"], name: "index_centers_on_region_id"
     t.index ["user_id"], name: "index_centers_on_user_id"
+    t.index ["zip_code_id"], name: "index_centers_on_zip_code_id"
   end
 
   create_table "doctor_insurances", force: :cascade do |t|
@@ -163,6 +154,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_221438) do
     t.string "headshot_source"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "region_id"
+    t.index ["region_id"], name: "index_doctors_on_region_id"
   end
 
   create_table "glossaries", force: :cascade do |t|
@@ -217,7 +210,9 @@ ActiveRecord::Schema.define(version: 2020_03_05_221438) do
     t.string "first_name"
     t.string "last_name"
     t.integer "role", default: 0
+    t.integer "region_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["region_id"], name: "index_users_on_region_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -229,8 +224,6 @@ ActiveRecord::Schema.define(version: 2020_03_05_221438) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "center_docotrs", "centers"
-  add_foreign_key "center_docotrs", "doctors"
   add_foreign_key "center_doctors", "centers"
   add_foreign_key "center_doctors", "doctors"
   add_foreign_key "center_events", "centers"
@@ -238,11 +231,15 @@ ActiveRecord::Schema.define(version: 2020_03_05_221438) do
   add_foreign_key "center_services", "services"
   add_foreign_key "center_specialities", "centers"
   add_foreign_key "center_specialities", "specialities"
+  add_foreign_key "centers", "regions"
   add_foreign_key "centers", "users"
+  add_foreign_key "centers", "zip_codes"
   add_foreign_key "doctor_insurances", "doctors"
   add_foreign_key "doctor_insurances", "insurances"
   add_foreign_key "doctor_specialities", "doctors"
   add_foreign_key "doctor_specialities", "specialities"
   add_foreign_key "doctor_types", "doctors"
   add_foreign_key "doctor_types", "physician_types"
+  add_foreign_key "doctors", "regions"
+  add_foreign_key "users", "regions"
 end

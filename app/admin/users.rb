@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
-  permit_params :email, :password,:first_name,:last_name,:role, :password_confirmation
-
+  permit_params :email, :password,:region_id,:first_name,:last_name,:role, :password_confirmation
+  
   index do
     selectable_column
     id_column
@@ -8,6 +8,7 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column :role
+    column :region
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
@@ -29,6 +30,7 @@ ActiveAdmin.register User do
       f.input :first_name
       f.input :last_name
       f.input :role
+      f.input :region_id , :as => :select, :collection => Region.all ,:member_label => :state
       f.input :password_confirmation
     end
     f.actions

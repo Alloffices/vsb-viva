@@ -1,2 +1,144 @@
-<h1>OurLocations#index</h1>
-<p>Find me in app/views/our_locations/index.html.erb</p>
+<banner class="banners">
+	<%= image_tag("locations_banner.png", class:"banner-img", alt: "Conviva Care Center Photo.") %>
+</banner>
+<main class="content" id="content"> 
+	<div class="section no-search">
+    	<div class="content-contain visible">
+        	<div class="intro-container">
+            	<h1 class="smallest">Our Locations</h1>
+           	 	<p class="subtitle">You can find Conviva Care Centers in Texas and Florida, with new locations coming soon.</p>
+            	<p>Please search below for a Center near you and explore details about a physician, location and services.</p>
+            	<p>Browse by location in:</p>
+
+            	<div class="row">
+                	<h3>Texas</h3>
+                	<div class="customize-select">
+
+                    	<div class="select-wrapper">
+
+                        	<span class="current-selection">View All Counties</span>
+                        	<ul>
+                        		<li class="option-selection" data-val="Aransas">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9BcmFuc2Fz" class="a-dropdown">Aransas</a>
+                                </li>
+                       			<li class="option-selection" data-val="Bexar">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9CZXhhcg" class="a-dropdown">Bexar</a>
+                                </li>
+                                <li class="option-selection" data-val="Comal">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9Db21hbA" class="a-dropdown">Comal</a>
+                                </li>
+                                <li class="option-selection" data-val="El Paso">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9FbCtQYXNv" class="a-dropdown">El Paso</a>
+                                </li>
+                                <li class="option-selection" data-val="Nueces">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9OdWVjZXM" class="a-dropdown">Nueces</a>
+                                </li>
+                                <li class="option-selection" data-val="Wilson">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9XaWxzb24" class="a-dropdown">Wilson</a>
+                                </li>
+                            </ul>
+                            <input type="hidden" data-column="county" name="county" value="-1">
+
+                    	</div>
+                	</div>
+            	</div>
+
+            	<div class="row">
+                	<h3>Florida</h3>
+                	<div class="customize-select">
+
+                    	<div class="select-wrapper">
+
+                        	<span class="current-selection">View All Counties</span>
+                        	<ul>
+                                <li class="option-selection" data-val="Broward">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9Ccm93YXJk" class="a-dropdown">Broward</a>
+                                </li>
+                                <li class="option-selection" data-val="Clay">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9DbGF5" class="a-dropdown">Clay</a>
+                                </li>
+                                <li class="option-selection" data-val="Duval">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9EdXZhbA" class="a-dropdown">Duval</a>
+                                </li>
+                                <li class="option-selection" data-val="Flagler">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9GbGFnbGVy" class="a-dropdown">Flagler</a>
+                                </li>
+                                <li class="option-selection" data-val="Hillsborough">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9IaWxsc2Jvcm91Z2g" class="a-dropdown">Hillsborough</a>
+                                </li>
+                                <li class="option-selection" data-val="Martin">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9NYXJ0aW4" class="a-dropdown">Martin</a>
+                                </li>
+                                                            <li class="option-selection" data-val="Miami-Dade">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9NaWFtaS1EYWRl" class="a-dropdown">Miami-Dade</a>
+                                </li>
+                                <li class="option-selection" data-val="Nassau">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9OYXNzYXU" class="a-dropdown">Nassau</a>
+                                </li>
+                                <li class="option-selection" data-val="Orange">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9PcmFuZ2U" class="a-dropdown">Orange</a>
+                                </li>
+                                <li class="option-selection" data-val="Osceola">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9Pc2Nlb2xh" class="a-dropdown">Osceola</a>
+                                </li>
+                                <li class="option-selection" data-val="Palm Beach">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9QYWxtK0JlYWNo" class="a-dropdown">Palm Beach</a>
+                                </li>
+                                <li class="option-selection" data-val="Pasco">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9QYXNjbw" class="a-dropdown">Pasco</a>
+                                </li>
+                                <li class="option-selection" data-val="Volusia">
+                                    <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zL2NvdW50eS9Wb2x1c2lh" class="a-dropdown">Volusia</a>
+                                </li>
+                            </ul>
+                            <input type="hidden" data-column="county" name="county" value="-1">
+
+                    	</div>
+                	</div>
+            	</div>
+        	</div>
+    	</div>
+	</div>
+
+	<div class="section search-form-section">
+
+		<div class="location-map left-map" aria-label="image of the United States map on blue with Florida and Texas states indicated on orange" style="background-image: url(<%= asset_path 'full-map.svg' %>);"></div>
+		<div class="content-contain" id="content-contain-results">
+			<div class="sub-section">
+
+                <form method="post" action="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zLyNzZWFyY2gtcmVzdWx0cw" id="search-form"><input type="hidden" name="webproxy_is_original_get" value="1">
+
+                    <input type="hidden" name="lat">
+                    <input type="hidden" name="lng">
+                    <input type="hidden" name="CsrfToken" value="b92f3e2bd0afda3a71d620bbf27b1caf87ee7c04532c7e79b99843ea637da3d1">
+                    <div class="row">
+                        <input type="checkbox" name="transportation" id="transportation"><label for="transportation">Only show locations with transportation.</label>
+                    </div>
+                    <input type="text" name="address" aria-label="Enter Address, City, or Zip Code" placeholder="Enter Address, City, or Zip Code" id="rockport-lookup" value="">
+                    <input type="submit" class="styled-link selected nearest-locations" value="Search Locations" onclick="rockPort()">
+                </form>
+
+
+                <button class="styled-link current-locations">Search by Current Location</button>
+            </div>
+        </div>
+	</div>
+	<a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25zLw#" data-location="" data-county="" data-physician="" data-action="tour" class="styled-link request-appointment" data-title="Request a Tour">Request a Tour</a>
+
+	<!-- Conditionals for search RP -->
+	<script type="text/javascript">
+	    function rockPort() {
+	        let ping = document.querySelector('input#rockport-lookup');
+	        if ( ping.value == "rockport" || ping.value === "Rockport" ) {
+	            document.querySelector('input#rockport-lookup').value = "City Rockport";
+	        }
+	        if ( ping.value == "eighth street" || ping.value == "Eighth Street" || ping.value == "8th") {
+	            document.querySelector('input#rockport-lookup').value = "Conviva Care Center Eighth Street";
+	        }
+	        if ( ping.value == "flagler" || ping.value == "Flagler") {
+	            document.querySelector('input#rockport-lookup').value = "Conviva Care Center Flagler";
+	        }
+	    }
+	</script>
+	<div class="shadow"></div>
+</main>

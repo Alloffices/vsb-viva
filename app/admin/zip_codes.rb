@@ -5,12 +5,12 @@ ActiveAdmin.register ZipCode do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :zipcode, :country, :lat, :lng
+  permit_params :zipcode, :lat, :lng
   #
   # or
   #
   # permit_params do
-  #   permitted = [:zipcode, :country, :lat, :lng]
+  #   permitted = [:zipcode, :lat, :lng]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
