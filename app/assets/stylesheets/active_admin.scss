@@ -10,6 +10,10 @@
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
+
+
+$skinActiveColor: #f5b642;
+
 @import "active_admin_flat_skin";
 @import "font-awesome";
 // Overriding any non-variable SASS must be done after the fact.
@@ -17,14 +21,3 @@
 //
 //   .status_tag { background: #6090DB; }
 
-$panelBorder: #babdc5;
-$skinActiveColor: white;
-$bodyColor: rgba(236, 240, 241, 0.48);
-$skinBlack: rgb(55, 71, 79);
-$panelHeaderBck: $skinBlack;
-$skinBlackLight: rgb(69, 90, 100);
-$textGray: rgb(174, 179, 181);
-$skinTextColor: #1e2a33;
-$skinTextActiveColor: white;
-$skinTextTable: #7f8c8d;
-$skinHeaderBck: #1e2a33;

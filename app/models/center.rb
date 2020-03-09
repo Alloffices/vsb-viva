@@ -1,6 +1,7 @@
 class Center < ApplicationRecord
   belongs_to :user
-  
+  belongs_to :region
+  belongs_to :zip_code
   has_many :center_events , dependent: :destroy
   has_many :center_specialities , dependent: :destroy
   has_many :specialities ,through: :center_specialities
@@ -9,7 +10,4 @@ class Center < ApplicationRecord
   has_many :center_services ,dependent: :destroy
   has_many :services ,through: :center_services
   accepts_nested_attributes_for :center_doctors,:center_events ,:center_specialities ,:center_services , allow_destroy: true
-  def display_name
-     first_name
-   end
 end

@@ -1,2 +1,59 @@
-<h1>Contact#index</h1>
-<p>Find me in app/views/contact/index.html.erb</p>
+<banner class="banners">
+	<%= image_tag("dots.svg", class:"banner-dots", alt: "triangle made of blue dots") %>
+</banner>
+<main class="content" id="content"> 
+	<div class="section dark-header">
+    	<div class="content-contain">
+        	<h1 class="smallest alt-color">Contact Us</h1>
+        	<a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9jb250YWN0L3RlbDoxODMzMjIwODY1NA" class="styled-link no-border alt-color mb">1-833-220-8654</a>
+    	</div>
+	</div>
+
+	<div class="section">
+
+    	<div class="content-contain">
+
+       		<div class="half">
+            
+            	<h2 class="smallest">We'd Love to Hear from You</h2>
+            	<p class="bigger">Please fill out the form below to let us know how we may assist you. If you would like more information, please give us a call and we’ll be happy to help.</p>
+
+            
+            
+            	<form method="POST" id="contact" action="#response" autocomplete="off">
+
+                	<input type="hidden" name="CsrfToken" value="b92f3e2bd0afda3a71d620bbf27b1caf87ee7c04532c7e79b99843ea637da3d1">
+                	<input type="hidden" name="contact_submitted" value="true">
+                	<input type="text" name="name" aria-label="Your Name" placeholder="* Your Name" required="">
+                	<input type="email" name="email" aria-label="Email" placeholder="* Email" required="">
+                	<input type="text" name="subject" aria-label="Subject" placeholder="* Subject" required="">
+                	<textarea name="message" rows="5" aria-label="Message" placeholder="Message" required=""></textarea>
+                	<div class="g-recaptcha" data-sitekey="6Lfkjr0UAAAAAIjjETFe1v84fqu4WAx6Y3rWdRIW" id="contact-recaptcha" required=""><div style="width: 304px; height: 78px;"><div></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div>
+                	<input type="hidden" class="required-input" name="g_response" value="" required="">
+                	<input type="submit" class="styled-link" value="Submit">
+            	</form>
+        	</div>
+
+        	<div class="half">
+
+            	<div class="sub-section">
+
+                	<div class="row">
+                		<%= image_tag("icons-05.svg", alt: "Contact Icon") %>
+                    	<h3 class="alt-h3">1-833-220-8654</h3>
+                	</div>
+                	<a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9jb250YWN0L3RlbDoxODMzMjIwODY1NA" class="styled-link">Call Us</a>
+            	</div>
+
+            	<div class="sub-section second-bg">
+            		<%= image_tag("icons-06.svg", alt: "Address Icon") %>
+                	<h3 class="alt-h3">Find Your Location</h3>
+                	<p>If you are trying to contact your location to make an appointment or for any other questions, please locate your center:</p>
+                	<a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9vdXItbG9jYXRpb25z" class="styled-link">View Locations</a>
+                	<a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9jb250YWN0Lw#" data-location="" data-county="" data-physician="" data-action="meet_physician" class="styled-link request-appointment" data-title="Meet a Physician">Meet a Physician</a>
+            	</div>
+        	</div>
+    	</div>
+	</div>
+	<div class="shadow"></div>
+</main>

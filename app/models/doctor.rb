@@ -1,5 +1,5 @@
 class Doctor < ApplicationRecord
-	
+	belongs_to :region
 	enum language:[:English,:Spanish]
 	has_many :doctor_specialities , dependent: :destroy
 	has_many :specialities ,through: :doctor_specialities 

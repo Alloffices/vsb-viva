@@ -8,17 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-// require("active_admin");
-require("chosen.jquery.min");
-require("customize-select");
-require("moment");
-require("ofi.browser");
-require("moment.min");
-require("script");
-require("slick");
-require("scripts");
-require("jquery.fittex");
-
 import 'bootstrap'
 import '../stylesheets/application'
 
@@ -35,9 +24,9 @@ document.addEventListener("turbolinks:load",()=>{
 // const imagePath = (name) => images(name, true)
 
 // import '../stylesheets/site'
-import '../stylesheets/flexslider.css'
-import '../stylesheets/ie.css'
-import '../stylesheets/print.css'
-import '../stylesheets/screen.css'
-import '../stylesheets/slick.css'
-import '../stylesheets/screen1.css'
+import '../stylesheets/flexslider'
+import '../stylesheets/ie'
+import '../stylesheets/print'
+import '../stylesheets/screen'
+import '../stylesheets/slick'
+import '../stylesheets/screen1'

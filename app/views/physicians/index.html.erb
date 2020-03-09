@@ -1,2 +1,39 @@
-<h1>Physicians#index</h1>
-<p>Find me in app/views/physicians/index.html.erb</p>
+<banner class="banners">
+	<%= image_tag("physicians_banner.png", class:"banner-img", alt: "Doctors talking to each other.") %>
+</banner>
+<main class="content" id="content"> 
+    <div class="section">
+        <div class="content-contain">
+            <div class="intro-container">
+                <h1>Our Physicians</h1>
+                <p class="subtitle">Our physicians are respected and established community physicians dedicated to helping each patient live their best life.</p>
+                <p>Please search below for a Center near you and explore details about a physician, location and services.</p>
+            </div>
+        </div>
+    </div>
+	<div class="section search-form-section">
+
+        <div class="location-map left-map" aria-label="image of the United States map on blue with Florida and Texas states indicated on orange" style="background-image: url(<%= asset_path 'full-map.svg' %>);"></div>
+    
+    	<div class="content-contain" id="content-contain-results">
+            <div class="sub-section">
+
+            	<form method="post" action="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9waHlzaWNpYW5zLyNzZWFyY2gtcmVzdWx0cw" id="search-form"><input type="hidden" name="webproxy_is_original_get" value="1">
+
+                	<input type="hidden" name="lat">
+                	<input type="hidden" name="lng">
+                	<input type="hidden" name="CsrfToken" value="b92f3e2bd0afda3a71d620bbf27b1caf87ee7c04532c7e79b99843ea637da3d1">
+                	<input type="text" name="address" aria-label="Enter Physician Name, Address, City, or Zip Code" placeholder="Enter Physician Name, Address, City, or Zip Code">
+                	<input type="submit" class="styled-link selected nearest-locations" value="Search Physicians">
+            	</form>
+            
+            	<button class="styled-link current-locations modal-locations">Search by Current Location</button>
+        	</div>
+        
+        </div>
+	</div>
+
+	<a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9waHlzaWNpYW5zLw#" data-location="" data-county="" data-physician="" data-action="meet_physician" class="styled-link request-appointment" data-title="Meet a Physician">Meet a Physician</a>
+	<div class="shadow"></div>
+</main>
+
