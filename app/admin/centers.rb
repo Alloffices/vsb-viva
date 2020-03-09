@@ -41,10 +41,10 @@ ActiveAdmin.register Center do
       f.input :friday_ext_hours
       f.input :saturday_ext_hours
       f.input :sunday_ext_hours
-      f.has_many :center_doctors , :class=>'select_category' do |n_f|
-        n_f.input :doctor, as: :check_boxes, collection: Doctor.all.map{|doctor| [doctor.name, doctor.id]}
+      f.has_many :center_doctors do |n_f|
+        n_f.input :doctor
       end
-
+# _f.input :doctor, as: :check_boxes, collection: Doctor.all.map{|doctor| [doctor.name, doctor.id]}
       f.has_many :center_specialities do |n_f|
         n_f.input :speciality
       end 
