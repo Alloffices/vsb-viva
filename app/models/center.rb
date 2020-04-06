@@ -1,13 +1,22 @@
 class Center < ApplicationRecord
-  belongs_to :user
-  belongs_to :region
-  belongs_to :zip_code
+
+  belongs_to :location_description, optional: true
+ 
   has_many :center_events , dependent: :destroy
   has_many :center_specialities , dependent: :destroy
-  has_many :specialities ,through: :center_specialities
+  has_many :specialities ,through: :center_specialities , dependent: :destroy
   has_many :center_doctors , dependent: :destroy
-  has_many :doctors ,through: :center_doctors
+  has_many :doctors ,through: :center_doctors , dependent: :destroy
   has_many :center_services ,dependent: :destroy
-  has_many :services ,through: :center_services
+  has_many :services ,through: :center_services , dependent: :destroy
+  has_many :center_insurances , dependent: :destroy
+  has_many :insurances, through: :center_insurances , dependent: :destroy
+  has_many_attached :images
+  
+
+  validates :name, :address_1, :city, :county, :primary_phone,
+            :state, :latitude, :longitude, :center_admin, presence:true
+  validates_uniqueness_of :name
+
   accepts_nested_attributes_for :center_doctors,:center_events ,:center_specialities ,:center_services , allow_destroy: true
 end

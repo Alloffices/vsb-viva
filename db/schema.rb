@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_194715) do
+ActiveRecord::Schema.define(version: 2020_04_05_210726) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -26,6 +26,27 @@ ActiveRecord::Schema.define(version: 2020_03_09_194715) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
   create_table "appointments", force: :cascade do |t|
     t.string "your_name"
     t.string "email"
@@ -34,6 +55,21 @@ ActiveRecord::Schema.define(version: 2020_03_09_194715) do
     t.string "time"
     t.string "notes"
     t.integer "contacted_via", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "category_docotrs", force: :cascade do |t|
+    t.integer "doctor_id", null: false
+    t.integer "doctor_category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_category_id"], name: "index_category_docotrs_on_doctor_category_id"
+    t.index ["doctor_id"], name: "index_category_docotrs_on_doctor_id"
+  end
+
+  create_table "center_administrators", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -54,10 +90,20 @@ ActiveRecord::Schema.define(version: 2020_03_09_194715) do
     t.date "start_date"
     t.date "end_date"
     t.string "description"
-    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "admin_id"
+    t.integer "created_by_id"
     t.index ["center_id"], name: "index_center_events_on_center_id"
+  end
+
+  create_table "center_insurances", force: :cascade do |t|
+    t.integer "insurance_id"
+    t.integer "center_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["center_id"], name: "index_center_insurances_on_center_id"
+    t.index ["insurance_id"], name: "index_center_insurances_on_insurance_id"
   end
 
   create_table "center_services", force: :cascade do |t|
@@ -80,7 +126,6 @@ ActiveRecord::Schema.define(version: 2020_03_09_194715) do
 
   create_table "centers", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id", null: false
     t.string "address_1"
     t.string "address_2"
     t.string "city"
@@ -88,8 +133,6 @@ ActiveRecord::Schema.define(version: 2020_03_09_194715) do
     t.string "primary_phone"
     t.string "additional_phones"
     t.string "fax"
-    t.integer "pharmacy"
-    t.integer "humana"
     t.time "monday_hours"
     t.time "tuesday_hours"
     t.time "wednesday_hours"
@@ -100,29 +143,28 @@ ActiveRecord::Schema.define(version: 2020_03_09_194715) do
     t.time "special_hours"
     t.string "calendar_notes"
     t.string "approved_calendar_notes"
-    t.integer "monday_ext_hours"
-    t.integer "tuesday_ext_hours"
-    t.integer "wednesday_ext_hours"
-    t.integer "thursday_ext_hours"
-    t.integer "friday_ext_hours"
-    t.integer "saturday_ext_hours"
-    t.integer "sunday_ext_hours"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "region_id"
-    t.integer "zip_code_id"
-    t.index ["region_id"], name: "index_centers_on_region_id"
-    t.index ["user_id"], name: "index_centers_on_user_id"
-    t.index ["zip_code_id"], name: "index_centers_on_zip_code_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "center_admin"
+    t.integer "location_description_id"
+    t.time "monday_ext_hours"
+    t.time "tuesday_ext_hours"
+    t.time "wednesday_ext_hours"
+    t.time "thursday_ext_hours"
+    t.time "friday_ext_hours"
+    t.time "saturday_ext_hours"
+    t.time "sunday_ext_hours"
+    t.string "state"
+    t.string "zip_code"
+    t.index ["location_description_id"], name: "index_centers_on_location_description_id"
   end
 
-  create_table "doctor_insurances", force: :cascade do |t|
-    t.integer "doctor_id", null: false
-    t.integer "insurance_id", null: false
+  create_table "doctor_categories", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["doctor_id"], name: "index_doctor_insurances_on_doctor_id"
-    t.index ["insurance_id"], name: "index_doctor_insurances_on_insurance_id"
   end
 
   create_table "doctor_specialities", force: :cascade do |t|
@@ -145,30 +187,26 @@ ActiveRecord::Schema.define(version: 2020_03_09_194715) do
 
   create_table "doctors", force: :cascade do |t|
     t.string "name"
-    t.integer "language"
     t.string "education"
     t.string "certifications"
     t.string "biography"
     t.string "video_id"
-    t.string "headshot_yext"
-    t.string "headshot_source"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "region_id"
-    t.index ["region_id"], name: "index_doctors_on_region_id"
-  end
-
-  create_table "glossaries", force: :cascade do |t|
-    t.string "key_name"
-    t.string "spanish"
-    t.string "english"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "doctor_category_id"
+    t.string "language"
+    t.string "avatar"
   end
 
   create_table "insurances", force: :cascade do |t|
     t.string "state"
     t.string "insurance_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "location_descriptions", force: :cascade do |t|
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -210,20 +248,14 @@ ActiveRecord::Schema.define(version: 2020_03_09_194715) do
     t.string "first_name"
     t.string "last_name"
     t.integer "role", default: 0
-    t.integer "region_id"
+    t.boolean "unable_to_destroy", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["region_id"], name: "index_users_on_region_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "zip_codes", force: :cascade do |t|
-    t.integer "zipcode"
-    t.string "lat"
-    t.string "lng"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "category_docotrs", "doctor_categories"
+  add_foreign_key "category_docotrs", "doctors"
   add_foreign_key "center_doctors", "centers"
   add_foreign_key "center_doctors", "doctors"
   add_foreign_key "center_events", "centers"
@@ -231,15 +263,9 @@ ActiveRecord::Schema.define(version: 2020_03_09_194715) do
   add_foreign_key "center_services", "services"
   add_foreign_key "center_specialities", "centers"
   add_foreign_key "center_specialities", "specialities"
-  add_foreign_key "centers", "regions"
-  add_foreign_key "centers", "users"
-  add_foreign_key "centers", "zip_codes"
-  add_foreign_key "doctor_insurances", "doctors"
-  add_foreign_key "doctor_insurances", "insurances"
+  add_foreign_key "centers", "location_descriptions"
   add_foreign_key "doctor_specialities", "doctors"
   add_foreign_key "doctor_specialities", "specialities"
   add_foreign_key "doctor_types", "doctors"
   add_foreign_key "doctor_types", "physician_types"
-  add_foreign_key "doctors", "regions"
-  add_foreign_key "users", "regions"
 end

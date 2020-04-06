@@ -21,3 +21,106 @@ $skinActiveColor: #f5b642;
 //
 //   .status_tag { background: #6090DB; }
 
+
+
+li.check_boxes.input.optional > fieldset > ol{
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+}
+
+li.select.input.optional > select.multiselect {
+  width: 50%;
+  height: 200px;
+  option {
+    font-size: 16px;
+  }
+}
+
+.working-hours{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.show-working-hours{
+  td{
+    display: flex;
+    .columns {
+      margin-left: 10px;
+    }
+  }
+}
+
+.hours{
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  .width-30{
+    width: 60%;
+    .fragments{
+      padding: 0 10px 0 28px;
+      .fragments-group {
+        label {
+          width: 30%;
+          padding: 0;
+        }
+      }
+    }
+    select{
+      width: 50%;
+    }
+  }
+}
+
+.row-image {
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.row-images{
+  ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    li {
+      margin-right: 10px;
+      img{
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}
+
+.inline-images{
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  li {
+    margin-right: 10px;
+    img{
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+#doctor_video_input{
+  display: inline;
+}
+#doctor_image_input{
+  display: inline;
+}
+
+.show-image{
+  display: inline;
+}
+
+#header{
+  padding-bottom: 80px !important;
+}

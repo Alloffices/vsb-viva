@@ -5,67 +5,83 @@ ActiveAdmin.register Doctor do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :name, :language,:region_id,:education, :certifications, :biography, :video_id, :headshot_yext, :headshot_source ,
-    doctor_specialities_attributes: [:id ,:doctor_id,:speciality_id] , doctor_insurances_attributes: [:id , :doctor_id , :insurance_id] , 
-    doctor_types_attributes: [:id , :doctor_id,:physician_type_id]
-
+   permit_params :name, :language,:education,:avatar,
+                 :certifications, :biography, :video_id, :image, doctor_category_ids: [],
+                 physician_type_ids: [] , center_ids:[]
 
     form do |f|
       f.semantic_errors *f.object.errors.keys
 
       f.inputs "Doctor" do
         f.input :name
-        f.input :region_id,:as => :select, :collection => Region.all ,:member_label => :state
         f.input :language
-        f.input :education 
+        f.input :education
         f.input :certifications
         f.input :biography
-        f.input :video_id
-        f.input :headshot_yext
-        f.input :headshot_source
-
-        f.has_many :doctor_types do |n_f|
-          n_f.input :physician_type
+        f.input :doctor_categories , as: :select, :input_html => {class: 'multiselect'}
+        f.input :video_id, as: :file
+        if doctor.video.attached?
+          li class: 'Video' do
+            video_tag(url_for(doctor.video), width: 200, height: 200, controls: 'controls')
+          end
         end
-
-        f.has_many :doctor_specialities do |n_f|
-          n_f.input :speciality
+        f.input :physician_types, as: :select, :input_html => {class: 'multiselect'}
+        f.input :centers , as: :select, :input_html => {class: 'multiselect'}
+        f.input :image, as: :file
+        if doctor.image.attached?
+          li class: 'show-image' do
+            image_tag url_for(doctor.image), width: 100, height: 100
+          end
         end
-        
-        f.has_many :doctor_insurances do |n_f|
-          n_f.input :insurance ,:member_label => :insurance_name
-        end
-        
       end
       f.actions
     end
 
-    show do 
+    show do
       attributes_table do
         row :name
-        row :region
         row :language
-        row :education 
+        row :education
         row :certifications
         row :biography
-        row :video_id
-        row :region
-        row :headshot_yext
-        row :headshot_source
-        attributes_table :physician_types ,:title => "Physician Type"
-        attributes_table :insurances ,:member_label => :insurance_name,:title => "Insurances"
-        attributes_table :specialities ,:title => "Specialities"
+        row :doctor_categories
+
+        row :video do |doctor|
+          video_tag(url_for(doctor.video_id), width: 400, height: 400, controls: 'controls') if doctor.video.attached?
+        end
+        row :image do |ad|
+          if ad.image.attached?
+            image_tag url_for(ad.avatar),width: 100, height: 100
+          else
+            image_tag url_for(ad.avatar),width: 100, height: 100
+          end   
+        end
+        row :physician_types
+        row :centers
       end
     end
 
-    
+   index do
+     column :id
+     column :name
+     column :language
+     column :education
+     column :certifications
+     column :biography
+     column :doctor_category
+     column :created_at
+     column :updated_at
+     actions
+   end
+
+
   #
   # or
   #
   # permit_params do
-  #   permitted = [:name, :language, :education, :certifications, :biography, :video_id, :headshot_yext, :headshot_source]
+  #   permitted = [:name, :language, :education, :certifications, :biography, :video, :headshot_yext, :headshot_source]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
 end

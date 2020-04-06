@@ -1,0 +1,11 @@
+
+<div style="background: white; padding: 0% 20% 0 20%;">
+  <div style="background: #FAF9FE; color: black; padding: 10% 7% 10% 7%;">
+    <h2>
+      Hi <%= @admin.full_name.capitalize %>,
+    </h2>
+    <div>
+      <%= @user.full_name.capitalize %> created event. <%= link_to 'click here', admin_center_event_url(@event) %> to check the event
+    </div>
+  </div>
+</div>

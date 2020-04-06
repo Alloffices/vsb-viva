@@ -54,6 +54,8 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
+  config.authorization_adapter = ActiveAdmin::CanCanAdapter
+  config.cancan_ability_class = Ability
   config.authentication_method = :authenticate_user!
 
   # == User Authorization
@@ -144,7 +146,7 @@ ActiveAdmin.setup do |config|
   # Enable and disable Batch Actions
   #
   config.batch_actions = true
-  
+
 
   # == Controller Filters
   #

@@ -1,0 +1,25 @@
+
+<div style="background: white; padding: 0% 20% 0 20%;">
+  <div style="background: #FAF9FE; color: black; padding: 10% 7% 10% 7%;">
+    <h2>
+      Hi <%= @admin.full_name.capitalize %>,
+    </h2>
+    <div>
+      You have Following pending events please check
+      <table>
+        <th>id</th>
+        <th>center</th>
+        <th>start date</th>
+        <th>end date</th>
+        <% @events.each do |event| %>
+        <tr>
+          <td><%= event.id %></td>
+          <td><%= event.center.name %></td>
+          <td><%= event.start_date %></td>
+          <td><%= event.end_date %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,21 @@
 class Doctor < ApplicationRecord
-	belongs_to :region
-	enum language:[:English,:Spanish]
-	has_many :doctor_specialities , dependent: :destroy
-	has_many :specialities ,through: :doctor_specialities 
 
-	has_many :doctor_types , dependent: :destroy
-	has_many :physician_types ,through: :doctor_types
 
-	has_many :doctor_insurances , dependent: :destroy
-	has_many :insurances ,through: :doctor_insurances
+
+	has_many :category_docotrs , dependent: :destroy
+	has_many :doctor_categories, through: :category_docotrs , dependent: :destroy
+
+	has_many :doctor_types, dependent: :destroy
+	has_many :physician_types, through: :doctor_types, dependent: :destroy
+	has_one_attached :image
+	has_one_attached :video
+
+
+	has_many :center_doctors, dependent: :destroy
+	has_many :centers, through: :center_doctors
+
+	accepts_nested_attributes_for  :doctor_types, :center_doctors,:category_docotrs,allow_destroy: true
 	
-	accepts_nested_attributes_for :doctor_specialities ,:doctor_types ,:doctor_insurances , allow_destroy: true
+	validates :name , :language ,presence:true
+	validates_uniqueness_of :name
 end
