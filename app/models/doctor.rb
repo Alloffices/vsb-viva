@@ -18,4 +18,6 @@ class Doctor < ApplicationRecord
 	
 	validates :name , :language ,presence:true
 	validates_uniqueness_of :name
+
+	
 end

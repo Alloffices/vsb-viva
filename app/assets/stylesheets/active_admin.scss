@@ -54,6 +54,12 @@ li.select.input.optional > select.multiselect {
   }
 }
 
+#active_admin_content #sidebar {
+  float: left;
+  width: 270px;
+  margin-left: 0;
+}
+
 .hours{
   display: flex;
   justify-content: center;

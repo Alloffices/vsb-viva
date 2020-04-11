@@ -7,12 +7,15 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://www.convivacarecenters.com/css/slick.css?3" rel="stylesheet">
+    <script src="https://use.fortawesome.com/3d1ec8f9.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
+    <script src="https://www.convivacarecenters.com/js/ofi.browser.js"></script>
   </head>
 
   <body class='<%= controller_name %>'>
     <header class="header">
       <div class="content-contain">
-
           <div class="logo">
               <a href="#" class="mb" aria-label="Visit the Home Page of Conviva Care Centers">
                   <%= image_tag("care-center-black.svg", class:"dt", alt: "Conviva Care Centers logo") %>
@@ -28,13 +31,13 @@
                   <li><a href="/services">Services</a></li>
                   <li><a href="/our_locations">Locations</a></li>
                   <li><a href="/physicians">Physicians</a></li>
-                  <li><a target="_blank" href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93b3JrZm9yY2Vub3cuYWRwLmNvbS9tYXNjc3IvZGVmYXVsdC9tZGYvcmVjcnVpdG1lbnQvcmVjcnVpdG1lbnQuaHRtbD9jaWQ9YTRjZGE1NGUtOWM5MS00MTBiLWI0NTAtNzI4NzRmYzQ5MmIwJmNjSWQ9MTkwMDAxMDFfMDAwMDAxJnR5cGU9TVAmbGFuZz1lbl9VUw">Careers</a></li>
+                  <li><a target="_blank" href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US">Careers</a></li>
                   <li><a href="/contact">Contact</a></li>
               </ul>
 
           </nav>
 
-          <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS8#" class="mb" id="mobile-nav" aria-label="Click to view navigation"><span class="fa fa-menu" aria-hidden="true"></span></a>
+          <a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US"><span class="fa fa-menu" aria-hidden="true"></span></a>
       </div>
     </header>
     <%= yield %>
@@ -46,7 +49,7 @@
                     
                     <div class="logo">
                       <%= image_tag("care-center-black.svg", class:"dt", alt: "Conviva Care Centers logo") %>
-                        <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS8" class="mb" aria-label="Visit the Home Page of Conviva Care Centers"><%= image_tag("care-center-black-tm.svg",class:"mb" , alt: "Conviva Care Centers logo") %></a>
+                        <a href="#" class="mb" aria-label="Visit the Home Page of Conviva Care Centers"><%= image_tag("care-center-black-tm.svg",class:"mb" , alt: "Conviva Care Centers logo") %></a>
                     </div>
 
                     <nav class="nav" aria-label="Footer Navigation">
@@ -57,7 +60,7 @@
                             <li><a href="/services">Services</a></li>
                             <li><a href="/our_locations">Locations</a></li>
                             <li><a href="/physicians">Physicians</a></li>
-                            <li><a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93b3JrZm9yY2Vub3cuYWRwLmNvbS9tYXNjc3IvZGVmYXVsdC9tZGYvcmVjcnVpdG1lbnQvcmVjcnVpdG1lbnQuaHRtbD9jaWQ9YTRjZGE1NGUtOWM5MS00MTBiLWI0NTAtNzI4NzRmYzQ5MmIwJmNjSWQ9MTkwMDAxMDFfMDAwMDAxJnR5cGU9TVAmbGFuZz1lbl9VUw" target="_blank">Careers</a></li>
+                            <li><a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" target="_blank">Careers</a></li>
                             <li><a href="/contact">Contact</a></li>
                         </ul>
                     </nav>                    
@@ -66,9 +69,9 @@
                 <div class="sub-section">
 
                     <span class="legal">
-                        <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9kb2NzL1ByaXZhY3k%20Policy.pdf" target="_blank">Privacy Policy</a>
-                        <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9kb2NzL0Rpc2NsYWltZXIucGRm" target="_blank">Disclaimer</a>
-                        <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS9kb2NzL0hJUFBB%20Care%20Center.pdf" target="_blank">HIPAA Notice of Privacy</a>
+                        <a href="#" target="_blank">Privacy Policy</a>
+                        <a href="#" target="_blank">Disclaimer</a>
+                        <a href="#" target="_blank">HIPAA Notice of Privacy</a>
                     </span>
 
                     <p class="all_rights">Conviva Care Centers © 2020 All Rights Reserved.</p>
@@ -76,11 +79,11 @@
                     <div class="ada-compliance">
 
                         <ul class="social">
-                            <li><a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9jb252aXZhY2FyZS8" target="_blank" title="Instagram" aria-label="Open Conviva Care Centers Instagram page in a new window"><span class="fa fa-instagram" aria-hidden="true"></span></a></li>
-                            <li><a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL0NvbnZpdmFDYXJlQ2VudGVyLw" target="_blank" title="Facebook" aria-label="Open Conviva Care Centers Facebook page in a new window"><span class="fa fa-facebook-box" aria-hidden="true"></span></a></li>
+                            <li><a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" target="_blank" title="Instagram" aria-label="Open Conviva Care Centers Instagram page in a new window"><span class="fa fa-instagram" aria-hidden="true"></span></a></li>
+                            <li><a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" target="_blank" title="Facebook" aria-label="Open Conviva Care Centers Facebook page in a new window"><span class="fa fa-facebook-box" aria-hidden="true"></span></a></li>
                         </ul>
                         
-                        <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cudzMub3JnL1dBSS9XQ0FHMkFBLUNvbmZvcm1hbmNl" target="_blank">
+                        <a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" target="_blank">
                             <%= image_tag("wcag2aa.svg", alt: "Conviva Care Centers logo") %>
                             <span>Level AA Conformance <br> W3C Web Content Accessibility</span>
                         </a>
@@ -90,6 +93,12 @@
                 </div>
             </div>
         </footer>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://www.convivacarecenters.com/js/moment.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+        <script src="https://www.convivacarecenters.com/js/slick.js?2"></script>
+        <script src="https://www.convivacarecenters.com/js/customize-select.js"></script>
+        <script src="https://www.convivacarecenters.com/js/script.min.js?31"></script>
   </body>
 </html>

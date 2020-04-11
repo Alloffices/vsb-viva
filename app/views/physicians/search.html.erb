@@ -1,4 +1,4 @@
-<div class="modal fade" id="exampleModal3" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal31" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="width: 1000px;position: absolute;left: -58%;padding: 10%;">
@@ -87,7 +87,6 @@
             schedule your <span>meet</span>.</p>
 
         </div>
-
         <input type="hidden" class="required-input" name="g_response" value="">
         <a href="" class="styled-link submit-appointment" style="width: 95%">Submit</a>
 
@@ -98,33 +97,46 @@
   </div>
 </div>
 
-<banner class="banners">
-  <%= image_tag("physicians_banner.png", class: "banner-img", alt: "Doctors talking to each other.") %>
-</banner>
-<main class="content" id="content">
-  <div class="section">
-    <div class="content-contain">
-      <div class="intro-container">
-        <h1>Our Physicians</h1>
-        <p class="subtitle">Our physicians are respected and established community physicians dedicated to helping each
-          patient live their best life.</p>
-        <p>Please search below for a Center near you and explore details about a physician, location and services.</p>
-      </div>
-    </div>
-  </div>
+
+
+<main class="content" id="content"> 
   <div class="section search-form-section">
-
-    <div class="location-map left-map" aria-label="image of the United States map on blue with Florida and Texas states indicated on orange" style="background-image: url(<%= asset_path 'full-map.svg' %>);"></div>
-
     <div class="content-contain" id="content-contain-results">
-      <div class="sub-section">
-        <%= render 'shared/search_physician_form' %>
+      <a href="#" class="styled-link back-to-results">Return to Physicians Search</a>
+      <% if @doctors.present? %>
+      <div class="second-bg list-container search-results doctor-results" id="search-results">
+        <h1 class="smallest">Search Results for <span><%=params[:search]%></span></h1>
+        <div class="container">
+          <% @doctors.each do |doctor| %>
+          <a class="item"  href="/physicians/<%= doctor.name %>">
+            <p>
+              <% if doctor.image.attached? %>
+              <%= image_tag url_for(doctor.image), width: 300, height: 300, class: 'doctor-thumbnail', alt: 'doctor image'%>
+              <% else %>
+              <%= image_tag url_for(doctor.avatar), width: 300, height: 300, class: 'doctor-thumbnail', alt: 'doctor image'%>
+              <% end %>
+            </p>
+            <h3><%=doctor.name%>,<%=doctor.physician_types.map{|d| d.name}.join(',')%></h3>
+            <p class="address"><%=doctor.centers.map{|c|c.name}.join(',')%></p>
+            <p class="address"><%=doctor.centers.first.address_city%>,<%= doctor.centers.first.state_zip_code%></p>
+            <p class="details">View Physician <label class="dt">Details</label></p>
+          </a>
+          <% end %>
+        </div>
       </div>
-
+      <% else %>
+      <div class="second-bg list-container search-results" id="search-results">
+        <h1 class="smallest">Search Results for <span>Physicians</span></h1>
+        <div class="container">
+          <h3 class="text-center">There are no Physicians that match your search. Please try again.</h3>
+        </div>
+      </div>
     </div>
-  </div>
-  <button class="styled-link request-appointment" data-toggle="modal" data-target="#exampleModal3">Meet a Physician
+  <% end %>
+  <div class="row" >
+    <button class="styled-link request-appointment" data-toggle="modal" data-target="#exampleModal31">Meet a Physician
   </button>
-  <div class="shadow"></div>
+  </div>
+</div>
+<div class="shadow"></div>
 </main>
-

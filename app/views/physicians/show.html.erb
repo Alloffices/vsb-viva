@@ -1,4 +1,4 @@
-<div class="modal fade" id="exampleModal3" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal031" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="width: 1000px;position: absolute;left: -58%;padding: 10%;">
@@ -87,7 +87,6 @@
             schedule your <span>meet</span>.</p>
 
         </div>
-
         <input type="hidden" class="required-input" name="g_response" value="">
         <a href="" class="styled-link submit-appointment" style="width: 95%">Submit</a>
 
@@ -97,34 +96,50 @@
     </div>
   </div>
 </div>
+<main class="content" id="content"> 
+<div class="section dark-header">
+  <div class="content-contain">
+    <% if @doctor.image.attached?%>
+     <%= image_tag("#{@doctor.image}", alt: "#{@doctor.name}") %>
+    <%else%>
+      <%= image_tag("#{@doctor.avatar}", alt: "#{@doctor.name}") %>
+    <%end%>
+    <div class="sub-section">
+      <h1 class="smallest alt-color"><%=@doctor.name%>,<%=@doctor.physician_types.map{|p| p.name}.join(',')%></h1>
+      <p class="center-city"><%=@doctor.doctor_categories.map{|cat| cat.name}.join()%></p>
+      <div class="buttons">
 
-<banner class="banners">
-  <%= image_tag("physicians_banner.png", class: "banner-img", alt: "Doctors talking to each other.") %>
-</banner>
-<main class="content" id="content">
-  <div class="section">
-    <div class="content-contain">
-      <div class="intro-container">
-        <h1>Our Physicians</h1>
-        <p class="subtitle">Our physicians are respected and established community physicians dedicated to helping each
-          patient live their best life.</p>
-        <p>Please search below for a Center near you and explore details about a physician, location and services.</p>
+        <button class="styled-link request-appointment" data-toggle="modal" data-target="#exampleModal031">Meet a Physician
+      </button>
       </div>
     </div>
   </div>
-  <div class="section search-form-section">
-
-    <div class="location-map left-map" aria-label="image of the United States map on blue with Florida and Texas states indicated on orange" style="background-image: url(<%= asset_path 'full-map.svg' %>);"></div>
-
-    <div class="content-contain" id="content-contain-results">
-      <div class="sub-section">
-        <%= render 'shared/search_physician_form' %>
-      </div>
-
+</div>
+<div class="section">
+  <div class="content-contain">
+    <div class="half second-bg">
+      <h3>Languages</h3>
+      <% @doctor.language.split(',').each do |l|%>
+      <p><%=l%></p>
+      <%end%>
     </div>
+    <% @doctor.centers.each do |center|%>
+    <div class="physician-center">
+      <h3><%=center.name%></h3>
+      <p><%=center.address_city%>, <%=center.state_zip_code%></p>
+      <br>
+      <br>
+      <a href="#" style="text-align: center;"><%=center.primary_phone%></a>
+      <a href="#" class="styled-link">Details </a>
+    </div>
+    <%end%>
   </div>
-  <button class="styled-link request-appointment" data-toggle="modal" data-target="#exampleModal3">Meet a Physician
-  </button>
-  <div class="shadow"></div>
+</div>
+<div class="shadow"></div>
 </main>
 
+<script type="text/javascript">
+    var body = document.body;
+    body.classList.remove("physicians");
+    body.classList.add("physician");
+</script>

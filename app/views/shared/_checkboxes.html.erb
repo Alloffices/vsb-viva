@@ -1,0 +1,27 @@
+<fieldset class="row">
+  <legend><h2>Physicians &amp; Locations</h2></legend>
+  <div>
+    <input type="radio" name="search_by" value="physicians" id="search_by_physician" onchange="changeForm()"><label for="search_by_physician">Search Our Physicians</label>
+    <input type="radio" name="search_by" value="locations" id="search_by_location" checked="checked" onchange="changeForm()"><label for="search_by_location">Search Our Locations</label>
+  </div>
+</fieldset>
+
+<script>
+  $(document).ready(function(){
+    $('#search_by_physician')
+    if($('#search_by_physician').prop('checked')){
+      $('#location').hide();
+    } else {
+      $('#physician').hide();
+    }
+  });
+  function changeForm() {
+    if($('#search_by_physician').prop('checked')){
+      $('#location').hide();
+      $('#physician').show();
+    } else {
+      $('#physician').hide();
+      $('#location').show();
+    }
+  }
+</script>

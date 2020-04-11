@@ -1,4 +1,5 @@
-<div class="modal fade" id="exampleModal2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="exampleModal21" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="width: 1000px;position: absolute;left: -58%;padding: 10%;">
@@ -96,135 +97,39 @@
     </div>
   </div>
 </div>
-
-<banner class="banners">
-  <%= image_tag("locations_banner.png", class: "banner-img", alt: "Conviva Care Center Photo.") %>
-</banner>
 <main class="content" id="content">
-  <div class="section no-search">
-    <div class="content-contain visible">
-      <div class="intro-container">
-        <h1 class="smallest">Our Locations</h1>
-        <p class="subtitle">You can find Conviva Care Centers in Texas and Florida, with new locations coming soon.</p>
-        <p>Please search below for a Center near you and explore details about a physician, location and services.</p>
-        <p>Browse by location in:</p>
-
-        <div class="row">
-          <h3>Texas</h3>
-          <div class="customize-select">
-
-            <div class="select-wrapper">
-
-              <span class="current-selection">View All Counties</span>
-              <ul>
-                <li class="option-selection" data-val="Aransas">
-                  <a href="#">Aransas</a>
-                </li>
-                <li class="option-selection" data-val="Bexar">
-                  <a href="#">Bexar</a>
-                </li>
-                <li class="option-selection" data-val="Comal">
-                  <a href="#">Comal</a>
-                </li>
-                <li class="option-selection" data-val="El Paso">
-                  <a href="#">El Paso</a>
-                </li>
-                <li class="option-selection" data-val="Nueces">
-                  <a href="#">Nueces</a>
-                </li>
-                <li class="option-selection" data-val="Wilson">
-                  <a href="#">Wilson</a>
-                </li>
-              </ul>
-              <input type="hidden" data-column="county" name="county" value="-1">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <h3>Florida</h3>
-          <div class="customize-select">
-
-            <div class="select-wrapper">
-
-              <span class="current-selection">View All Counties</span>
-              <ul>
-                <li class="option-selection" data-val="Broward">
-                  <a href="#">Broward</a>
-                </li>
-                <li class="option-selection" data-val="Clay">
-                  <a href="#" class="a-dropdown">Clay</a>
-                </li>
-                <li class="option-selection" data-val="Duval">
-                  <a href="#">Duval</a>
-                </li>
-                <li class="option-selection" data-val="Flagler">
-                  <a href="#">Flagler</a>
-                </li>
-                <li class="option-selection" data-val="Hillsborough">
-                  <a href="#" class="a-dropdown">Hillsborough</a>
-                </li>
-                <li class="option-selection" data-val="Martin">
-                  <a href="#">Martin</a>
-                </li>
-                <li class="option-selection" data-val="Miami-Dade">
-                  <a href="#">Miami-Dade</a>
-                </li>
-                <li class="option-selection" data-val="Nassau">
-                  <a href="#">Nassau</a>
-                </li>
-                <li class="option-selection" data-val="Orange">
-                  <a href="#">Orange</a>
-                </li>
-                <li class="option-selection" data-val="Osceola">
-                  <a href="#">Osceola</a>
-                </li>
-                <li class="option-selection" data-val="Palm Beach">
-                  <a href="#">Palm Beach</a>
-                </li>
-                <li class="option-selection" data-val="Pasco">
-                  <a href="#">Pasco</a>
-                </li>
-                <li class="option-selection" data-val="Volusia">
-                  <a href="#">Volusia</a>
-                </li>
-              </ul>
-              <input type="hidden" data-column="county" name="county" value="-1">
-
-            </div>
-          </div>
+<div class="section search-form-section">
+  <div class="content-contain" id="content-contain-results">
+     <a href="#" class="styled-link back-to-results">Return to Locations Search</a>
+     <% if @centers.present? %>
+     <div class="second-bg list-container search-results" id="search-results">
+        <h1 class="smallest">Search Results for <span>Center name</span></h1>
+        <div class="container">
+          <h2 class="smallest no-conviva no-top"></h2>
+          <% @centers.each do |center| %>
+          <a class="item small-item" aria-label="View Location <label class='dt'>Details</label> for <%=center.name%>" href="/centers/<%=center.name%>">
+            <h3><%= center.name %></h3>
+            <p class="distance">1.6 miles</p>
+            <p class="address"><%= center.full_address %> </p>
+            
+            <p class="details">View Location <label class="dt">Details</label></p>
+          </a>
+          <% end %>
         </div>
       </div>
-    </div>
-  </div>
+      <% else %>
+      <div class="second-bg list-container search-results" id="search-results">
+        <h1 class="smallest">Search Results for <span>Center Name</span></h1>
+        <div class="container">
+          <h3 class="text-center">There are no locations that match your search. Please try again.</h3>
+        </div>
+      </div>
+      <% end %>
 
-  <div class="section search-form-section">
-
-    <div class="location-map left-map" aria-label="image of the United States map on blue with Florida and Texas states indicated on orange" style="background-image: url(<%= asset_path 'full-map.svg' %>);"></div>
-    <div class="content-contain" id="content-contain-results">
-      <div class="sub-section">
-        <%= render 'shared/search_location_form' %>
+      <div class="row" >
+        <button class="styled-link request-appointment" data-toggle="modal" data-target="#exampleModal21">Request a Tour</button>
       </div>
     </div>
-  </div>
-  <button class="styled-link request-appointment" data-toggle="modal" data-target="#exampleModal2">Request a Tour
-  </button>
-
-  <!-- Conditionals for search RP -->
-  <script type="text/javascript">
-    function rockPort() {
-      let ping = document.querySelector('input#rockport-lookup');
-      if (ping.value == "rockport" || ping.value === "Rockport") {
-        document.querySelector('input#rockport-lookup').value = "City Rockport";
-      }
-      if (ping.value == "eighth street" || ping.value == "Eighth Street" || ping.value == "8th") {
-        document.querySelector('input#rockport-lookup').value = "Conviva Care Center Eighth Street";
-      }
-      if (ping.value == "flagler" || ping.value == "Flagler") {
-        document.querySelector('input#rockport-lookup').value = "Conviva Care Center Flagler";
-      }
-    }
-  </script>
-  <div class="shadow"></div>
+</div>
+<div class="shadow"></div>
 </main>

@@ -51,7 +51,7 @@ ActiveAdmin.register Doctor do
         end
         row :image do |ad|
           if ad.image.attached?
-            image_tag url_for(ad.avatar),width: 100, height: 100
+            image_tag url_for(ad.image),width: 100, height: 100
           else
             image_tag url_for(ad.avatar),width: 100, height: 100
           end   

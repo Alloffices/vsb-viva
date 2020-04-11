@@ -3,12 +3,14 @@ class CenterEvent < ApplicationRecord
   belongs_to :admin,-> {where(role: User.roles[:SuperAdmin])}, class_name: 'User', foreign_key: 'admin_id'
   belongs_to :created_by, class_name: 'User', foreign_key: 'created_by_id'
   enum approved:[:pending,:approved]
-  validates :title, :start_date, :end_date, :description, :created_by, presence:true
+  validates :title, :start_date, :end_date, :start_time, :end_time, :description, :created_by, presence:true
   has_one_attached :image
 
   validate :start_date_should_be_one_month
   validate :end_date_should_be_greater_than_start_date
+  validate :start_time_less_than_end_time
   after_create :send_email_to_admin
+  scope :pending_event, -> (admin_id) {where(approved: CenterEvent.approveds[:pending], admin_id: admin_id)}
 
 
   def start_date_should_be_one_month
@@ -31,6 +33,13 @@ class CenterEvent < ApplicationRecord
     admin = User.find_by(id: self.admin_id)
     user = User.find_by(id: self.created_by)
     CenterEventMailer.with(user: user, admin: admin, event: self ).mail_to_admin.deliver_later
+  end
+
+
+  def start_time_less_than_end_time
+    if start_time >= end_time
+      errors.add(:end_time, 'should be greater than start time')
+    end
   end
 
 

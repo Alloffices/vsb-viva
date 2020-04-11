@@ -9,7 +9,6 @@ class Ability
     can :manage, CenterAdministrator
     can :manage, CenterDoctor
     can :manage, LocationDescription
-    can :manage, User
     can :manage, CenterEvent
     can :manage, CenterInsurance
     can :manage, CenterSpeciality
@@ -24,6 +23,7 @@ class Ability
     cannot :destroy, User, unable_to_destroy: true
     cannot :destroy, User, id: user.id
   if user.super_admin? && !user.unable_to_destroy
+      can :manage, User
       can :read, User, role: User.roles['SuperAdmin']
       can [:read, :create, :update, :destroy], User, role: User.roles['Manager']
       can :read, ActiveAdmin::Page, :name => "Dashboard"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_210726) do
+ActiveRecord::Schema.define(version: 2020_04_06_204020) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 2020_04_05_210726) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "admin_id"
     t.integer "created_by_id"
+    t.time "start_time"
+    t.time "end_time"
     t.index ["center_id"], name: "index_center_events_on_center_id"
   end
 
@@ -193,9 +195,11 @@ ActiveRecord::Schema.define(version: 2020_04_05_210726) do
     t.string "video_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "region_id"
     t.integer "doctor_category_id"
     t.string "language"
     t.string "avatar"
+    t.index ["region_id"], name: "index_doctors_on_region_id"
   end
 
   create_table "insurances", force: :cascade do |t|
@@ -248,8 +252,10 @@ ActiveRecord::Schema.define(version: 2020_04_05_210726) do
     t.string "first_name"
     t.string "last_name"
     t.integer "role", default: 0
+    t.integer "region_id"
     t.boolean "unable_to_destroy", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["region_id"], name: "index_users_on_region_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -268,4 +274,6 @@ ActiveRecord::Schema.define(version: 2020_04_05_210726) do
   add_foreign_key "doctor_specialities", "specialities"
   add_foreign_key "doctor_types", "doctors"
   add_foreign_key "doctor_types", "physician_types"
+  add_foreign_key "doctors", "regions"
+  add_foreign_key "users", "regions"
 end
