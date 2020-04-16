@@ -5,6 +5,8 @@ ActiveAdmin.register Speciality do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
+
+  config.sort_order = 'id_asc'
   permit_params :name, :canonical_url
   #
   # or

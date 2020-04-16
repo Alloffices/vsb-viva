@@ -1,0 +1,24 @@
+<ul>
+  <li>
+    <%= link_to 'Home', root_path, class: "#{params[:controller] == 'home' && params[:action] == 'index' ? 'current-page' : ''}" ,style:'text-decoration:none'%>
+  </li>
+  <li>
+    <%= link_to 'About', about_index_path, class: "#{params[:controller] == 'about' && params[:action] == 'index' ? 'current-page' : ''}" ,style:'text-decoration:none'%>
+  </li>
+  <li>
+    <%= link_to 'Services', services_path, class: "#{params[:controller] == 'services' && params[:action] == 'index' ? 'current-page' : ''}" ,style:'text-decoration:none'%>
+  </li>
+  <li>
+    <%= link_to 'Locations', our_locations_path, class: "#{params[:controller] == 'our_locations' && params[:action] == 'index' ? 'current-page' : ''}" ,style:'text-decoration:none'%>
+  </li>
+  <li>
+
+    <%= link_to 'Physicians', physicians_path, class: "#{params[:controller] == 'physicians' && params[:action] == 'index' ? 'current-page' : ''}" ,style:'text-decoration:none'%>
+
+ 
+  </li>
+  <li><a target="_blank" href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" style="text-decoration: none;">Careers</a></li>
+  <li>
+    <%= link_to 'Contact', contact_index_path, class: "#{params[:controller] == 'contact' && params[:action] == 'index' ? 'current-page' : ''}" ,style:'text-decoration:none'%>
+  </li>
+</ul>

@@ -1,0 +1,31 @@
+<footer class="footer">
+  <div class="content-contain">
+    <div class="sub-section">
+      <div class="logo">
+        <%= image_tag("care-center-black.svg", class:"dt", alt: "Conviva Care Centers logo") %>
+        <a href="#" class="mb" aria-label="Visit the Home Page of Conviva Care Centers"><%= image_tag("care-center-black-tm.svg",class:"mb" , alt: "Conviva Care Centers logo") %></a>
+      </div>
+      <nav class="nav" aria-label="Footer Navigation">
+        <%= render 'layouts/menu_list' %>
+      </nav>
+    </div>
+    <div class="sub-section">
+                    <span class="legal">
+                        <a href="#" target="_blank" style="text-decoration: none">Privacy Policy</a>
+                        <a href="#" target="_blank" style="text-decoration: none">Disclaimer</a>
+                        <a href="#" target="_blank" style="text-decoration: none">HIPAA Notice of Privacy</a>
+                    </span>
+      <p class="all_rights">Conviva Care Centers © 2020 All Rights Reserved.</p>
+      <div class="ada-compliance">
+        <ul class="social">
+          <li><a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" target="_blank" title="Instagram" aria-label="Open Conviva Care Centers Instagram page in a new window"><span class="fa fa-instagram" aria-hidden="true"></span></a></li>
+          <li><a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" target="_blank" title="Facebook" aria-label="Open Conviva Care Centers Facebook page in a new window"><span class="fa fa-facebook-box" aria-hidden="true"></span></a></li>
+        </ul>
+        <a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" target="_blank">
+          <%= image_tag("wcag2aa.svg", alt: "Conviva Care Centers logo") %>
+          <span>Level AA Conformance <br> W3C Web Content Accessibility</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

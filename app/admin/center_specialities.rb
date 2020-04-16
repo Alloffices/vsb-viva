@@ -5,6 +5,7 @@ ActiveAdmin.register CenterSpeciality do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
+  config.sort_order = 'id_asc'
    permit_params :center_id, :speciality_id
   #
   # or
@@ -14,5 +15,4 @@ ActiveAdmin.register CenterSpeciality do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

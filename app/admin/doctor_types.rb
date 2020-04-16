@@ -5,6 +5,7 @@ ActiveAdmin.register DoctorType do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
+  config.sort_order = 'id_asc'
    permit_params :doctor_id, :physician_type_id
   #
   # or

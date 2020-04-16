@@ -6,14 +6,14 @@ class CenterEvent < ApplicationRecord
   validates :title, :start_date, :end_date, :start_time, :end_time, :description, :created_by, presence:true
   has_one_attached :image
 
-  validate :start_date_should_be_one_month
+  validate :start_date_should_be_greater_than_one_month
   validate :end_date_should_be_greater_than_start_date
   validate :start_time_less_than_end_time
   after_create :send_email_to_admin
   scope :pending_event, -> (admin_id) {where(approved: CenterEvent.approveds[:pending], admin_id: admin_id)}
 
 
-  def start_date_should_be_one_month
+  def start_date_should_be_greater_than_one_month
     if start_date.present?
       unless start_date >= Date.current + 1.month
         errors.add(:start_date, 'must be 1 month greater')

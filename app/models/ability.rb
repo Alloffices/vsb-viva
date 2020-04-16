@@ -12,6 +12,9 @@ class Ability
     can :manage, CenterEvent
     can :manage, CenterInsurance
     can :manage, CenterSpeciality
+    can :manage, Appointment
+    can :manage, Contact 
+    can :manage, Tour
     can :manage, Doctor
     can :manage, DoctorCategory
     can :manage, DoctorType

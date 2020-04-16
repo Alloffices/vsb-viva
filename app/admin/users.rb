@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   permit_params :email, :password,:first_name,:last_name,:role, :password_confirmation, :unable_to_destroy
-
+  config.sort_order = 'id_asc'
   index do
     selectable_column
     id_column

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_204020) do
+ActiveRecord::Schema.define(version: 2020_04_15_142520) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -163,6 +163,15 @@ ActiveRecord::Schema.define(version: 2020_04_06_204020) do
     t.index ["location_description_id"], name: "index_centers_on_location_description_id"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "subject"
+    t.text "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "doctor_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -239,6 +248,18 @@ ActiveRecord::Schema.define(version: 2020_04_06_204020) do
     t.string "canonical_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tours", force: :cascade do |t|
+    t.string "your_name"
+    t.string "email"
+    t.string "phone"
+    t.time "time"
+    t.string "notes"
+    t.integer "contacted_via"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "date"
   end
 
   create_table "users", force: :cascade do |t|

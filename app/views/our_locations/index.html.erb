@@ -7,88 +7,58 @@
           <span aria-hidden="true">Close</span>
         </button>
 
-        <h2 style="text-align:center;">Request a Tour</h2>
+        <h2 class="modelheader" style="text-align:center;">Request a Tour</h2>
         <p class="message"></p>
+      <%= form_for Tour.new   do |f| %>
+  <div class="row">
+    <%= f.text_field :your_name, class: 'required-input', placeholder: '* Your Name', 'aria-label': 'Your Name', style: 'width: 48%' %>
+    <%= f.text_field :email, class: 'required-input', placeholder: '* Email', 'aria-label': 'Your Email', style: 'width: 48%' %>
+    <%= f.text_field :phone, class: 'required-input', placeholder: '* Phone', 'aria-label': 'Your Email', style: 'width: 48%' %>
+    <%= f.text_field :date, class: 'required-input modal_date', placeholder: '* Date', 'aria-label': 'Your Date', style: 'width: 48%', autocomplete: 'off' %>
 
-        <div class="row">
+    <div class="customize-select modal-show" data-visible="request_appointment,tour,meet_physician" id="modal_date_time" style="width: 98% !important; display: block;margin-bottom: 30px" >
 
-          <input type="text" class="required-input" placeholder="* Your Name" name="name" aria-label="Your Name" style="width: 48%">
-          <input type="email" class="required-input" placeholder="* Email" name="email" aria-label="Email" style="width: 48%">
-          <input type="text" placeholder=" Phone" name="phone" aria-label="Phone" style="width: 48%">
+      <div class="select-wrapper">
 
-          <div class="customize-select" data-visible="request_appointment,meet_physician,tour,more_information,leave_suggestion" id="modal_location_county" style="display: none;">
+        <span class="current-selection">Any</span>
+        <ul>
+          <li class="option-selection" data-val="any">
+            <span>Any</span>
+          </li>
 
-            <div class="select-wrapper">
+          <li class="option-selection" data-val="morning">
+            <span>Morning</span>
+          </li>
 
-              <span class="current-selection" data-default="Select Location">Select Location</span>
-              <ul></ul>
-              <input type="hidden" data-column="modal_location_county" name="modal_location_county" value="-1">
+          <li class="option-selection" data-val="afternoon">
+            <span>Afternoon</span>
+          </li>
+        </ul>
+        <%= f.hidden_field :time, 'data-column':"modal_date_time",value: 'any' %>
+      </div>
+    </div>
+    <%= f.text_area :notes, row: 4, class: 'modal-show', placeholder: 'Notes', 'aria-label': 'Your Notes', 'data-visible':"request_appointment,tour,meet_physician", style: "display: block;" %>
 
-            </div>
-          </div>
-          <div class="customize-select" data-visible="request_appointment,meet_physician" id="modal_physician" style="display: none;">
+    <textarea name="modal_message" data-visible="leave_suggestion,more_information,other" class="modal-show" rows="4" placeholder="Message" style="display: none;"></textarea>
 
-            <div class="select-wrapper">
+    <fieldset class="modal-show" data-visible="request_appointment,leave_suggestion,tour,meet_physician,more_information" style="display: block;">
+      <legend style="margin-top: 10px;margin-bottom: 10px"><p>I would like to be contacted via</p></legend>
+      <input type="radio" name="appointment[contacted_via]" value="email" id="contacted_via_email"><label for="contacted_via_email">Via Email</label>
+      <input type="radio" name="appointment[contacted_via]" value="phone" id="contacted_via_phone"><label for="contacted_via_phone">Via Phone</label>
+    </fieldset>
 
-              <span class="current-selection" data-default="Any Physician">Any Physician</span>
-              <ul></ul>
+    <fieldset class="modal-show" data-visible="other" style="display: none;">
+      <input type="checkbox" name="modal_contact_me" id="modal_contact_me">
+      <legend style="margin-top: 10px;margin-bottom: 10px"><p>I would like somebody to contact me.</p></legend>
+      <input type="radio" name="appointment[contacted_via]" value="email" id="contacted_via_email1"><label for="contacted_via_email">Via Email</label>
+      <input type="radio" name="appointment[contacted_via]" value="phone" id="contacted_via_phone1"><label for="contacted_via_phone">Via Phone</label>
+    </fieldset>
 
-              <input type="hidden" data-column="modal_physician" name="modal_physician" value="-1">
+    <p class="disclaimer modal-show" data-visible="request_appointment,tour,meet_physician" id="action-requested" style="display: block;margin-top: 10px;margin-bottom: 10px">Please note we cannot guarantee the date/time you have selected. We will call or email you with availabilities and schedule your  <span>request</span>.</p>
 
-            </div>
-          </div>
-          <input type="text" class="modal_date modal-show hasDatepicker" data-visible="request_appointment,tour,meet_physician" placeholder="Date" name="modal_date" aria-label="Date" id="dp1586368882593" style="display: block;width: 48%">
-          <div class="customize-select modal-show" data-visible="request_appointment,tour,meet_physician" id="modal_date_time" style="width: 100% !important; display: block;margin-bottom: 30px">
-
-            <div class="select-wrapper">
-
-              <span class="current-selection">Any</span>
-              <ul>
-                <li class="option-selection" data-val="any">
-                  <span>Any</span>
-                </li>
-
-                <li class="option-selection" data-val="morning">
-                  <span>Morning</span>
-                </li>
-
-                <li class="option-selection" data-val="afternoon">
-                  <span>Afternoon</span>
-                </li>
-              </ul>
-
-              <input type="hidden" data-column="modal_date_time" name="modal_date_time" value="any">
-
-            </div>
-          </div>
-          <textarea name="modal_notes" class="modal-show" data-visible="request_appointment,tour,meet_physician" rows="4" placeholder="Notes" style="display: block;"></textarea>
-
-          <textarea name="modal_message" data-visible="leave_suggestion,more_information,other" class="modal-show" rows="4" placeholder="Message" style="display: none;"></textarea>
-
-          <fieldset class="modal-show" data-visible="request_appointment,leave_suggestion,tour,meet_physician,more_information" style="display: block;">
-            <legend><p>I would like to be contacted via</p></legend>
-            <input type="radio" name="modal_contacted_via" value="email" id="contacted_via_email"><label for="contacted_via_email">Via
-            Email</label>
-            <input type="radio" name="modal_contacted_via" value="phone" id="contacted_via_phone"><label for="contacted_via_phone">Via
-            Phone</label>
-          </fieldset>
-
-          <fieldset class="modal-show" data-visible="other" style="display: none;">
-            <input type="checkbox" name="modal_contact_me" id="modal_contact_me">
-            <legend><p>I would like somebody to contact me.</p></legend>
-            <input type="radio" name="modal_contacted_via" value="email" id="contacted_via_email"><label for="contacted_via_email">Via
-            Email</label>
-            <input type="radio" name="modal_contacted_via" value="phone" id="contacted_via_phone"><label for="contacted_via_phone">Via
-            Phone</label>
-          </fieldset>
-
-          <p class="disclaimer modal-show" data-visible="request_appointment,tour,meet_physician" id="action-requested" style="display: block;">Please
-            note we cannot guarantee the date/time you have selected. We will call or email you with availabilities and
-            schedule your <span>tour</span>.</p>
-
-        </div>
-        <input type="hidden" class="required-input" name="g_response" value="">
-        <a href="" class="styled-link submit-appointment" style="width: 95%">Submit</a>
+  </div>
+  <%= f.submit 'Submit', class: 'styled-link submit-appointment', style: "width: 95%;margin-bottom:10px",data:{turbolinks:"false"}%>
+<% end %>
 
         <p class="disclaimer">Please do not submit any sensitive medical information. If you are in need of medical
           attention, please see a physician or call 911 in case of a medical emergency.</p>
@@ -111,29 +81,31 @@
 
         <div class="row">
           <h3>Texas</h3>
-          <div class="customize-select">
+          <div class="customize-select" style="margin-left: 30%">
 
             <div class="select-wrapper">
 
               <span class="current-selection">View All Counties</span>
               <ul>
                 <li class="option-selection" data-val="Aransas">
-                  <a href="#">Aransas</a>
+
+                  <a href="/our_locations/search?search=Aransas" style="text-decoration: none;">Aransas</a>
                 </li>
                 <li class="option-selection" data-val="Bexar">
-                  <a href="#">Bexar</a>
+                  <a href="/our_locations/search?search=Bexar" style="text-decoration: none;">Bexar</a>
                 </li>
                 <li class="option-selection" data-val="Comal">
-                  <a href="#">Comal</a>
+                  <a href="/our_locations/search?search=Comal" style="text-decoration: none;">Comal</a>
                 </li>
                 <li class="option-selection" data-val="El Paso">
-                  <a href="#">El Paso</a>
+                  <a href="/our_locations/search?search=El Paso" style="text-decoration: none;">El Paso</a>
                 </li>
                 <li class="option-selection" data-val="Nueces">
-                  <a href="#">Nueces</a>
+                  <a href="/our_locations/search?search=Nueces" style="text-decoration: none;">Nueces</a>
                 </li>
                 <li class="option-selection" data-val="Wilson">
-                  <a href="#">Wilson</a>
+                  <a href="/our_locations/search?search=Wilson" style="text-decoration: none;">Wilson</a>
+
                 </li>
               </ul>
               <input type="hidden" data-column="county" name="county" value="-1">
@@ -144,50 +116,50 @@
 
         <div class="row">
           <h3>Florida</h3>
-          <div class="customize-select">
-
+          <div class="customize-select" style="margin-left: 27%">
             <div class="select-wrapper">
-
               <span class="current-selection">View All Counties</span>
               <ul>
                 <li class="option-selection" data-val="Broward">
-                  <a href="#">Broward</a>
+
+                  <a href="/our_locations/search?search=Broward" style="text-decoration: none;">Broward</a>
                 </li>
                 <li class="option-selection" data-val="Clay">
-                  <a href="#" class="a-dropdown">Clay</a>
+                  <a href="/our_locations/search?search=Clay" class="a-dropdown" style="text-decoration: none;">Clay</a>
                 </li>
                 <li class="option-selection" data-val="Duval">
-                  <a href="#">Duval</a>
+                  <a href="/our_locations/search?search=Duval" style="text-decoration: none;">Duval</a>
                 </li>
                 <li class="option-selection" data-val="Flagler">
-                  <a href="#">Flagler</a>
+                  <a href="/our_locations/search?search=Flagler" style="text-decoration: none;">Flagler</a>
                 </li>
                 <li class="option-selection" data-val="Hillsborough">
-                  <a href="#" class="a-dropdown">Hillsborough</a>
+                  <a href="/our_locations/search?search=Hillsborough" class="a-dropdown" style="text-decoration: none;">Hillsborough</a>
                 </li>
                 <li class="option-selection" data-val="Martin">
-                  <a href="#">Martin</a>
+                  <a href="/our_locations/search?search=Martin" style="text-decoration: none;">Martin</a>
                 </li>
                 <li class="option-selection" data-val="Miami-Dade">
-                  <a href="#">Miami-Dade</a>
+                  <a href="/our_locations/search?search=Miami-Dade" style="text-decoration: none;">Miami-Dade</a>
                 </li>
                 <li class="option-selection" data-val="Nassau">
-                  <a href="#">Nassau</a>
+                  <a href="/our_locations/search?search=Nassau" style="text-decoration: none;">Nassau</a>
                 </li>
                 <li class="option-selection" data-val="Orange">
-                  <a href="#">Orange</a>
+                  <a href="/our_locations/search?search=Orange" style="text-decoration: none;">Orange</a>
                 </li>
                 <li class="option-selection" data-val="Osceola">
-                  <a href="#">Osceola</a>
+                  <a href="/our_locations/search?search=Osceola" style="text-decoration: none;">Osceola</a>
                 </li>
                 <li class="option-selection" data-val="Palm Beach">
-                  <a href="#">Palm Beach</a>
+                  <a href="/our_locations/search?search=Palm Beach" style="text-decoration: none;">Palm Beach</a>
                 </li>
                 <li class="option-selection" data-val="Pasco">
-                  <a href="#">Pasco</a>
+                  <a href="/our_locations/search?search=Pasco" style="text-decoration: none;">Pasco</a>
                 </li>
                 <li class="option-selection" data-val="Volusia">
-                  <a href="#">Volusia</a>
+                  <a href="/our_locations/search?search=Volusia" style="text-decoration: none;">Volusia</a>
+
                 </li>
               </ul>
               <input type="hidden" data-column="county" name="county" value="-1">

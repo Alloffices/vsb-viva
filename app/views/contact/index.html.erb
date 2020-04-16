@@ -1,90 +1,15 @@
-<div class="modal fade" id="exampleModal3"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" > 
+<div class="modal fade" id="exampleModal3"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
 
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="width: 1000px;position: absolute;left: -58%;padding: 10%;">
+    <div class="modal-content modal-responsive" >
       <div class="modal-body" style="display: block;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: -42px;top: -39px;">
           <span aria-hidden="true">Close</span>
         </button>
 
-        <h2 style="text-align:center;">Meet a Physician</h2>
+        <h2 class="modelheader" style="text-align:center;">Meet a Physician</h2>
         <p class="message"></p>
-
-        <div class="row">
-
-            <input type="text" class="required-input" placeholder="* Your Name" name="name" aria-label="Your Name" style="width: 48%">
-            <input type="email" class="required-input" placeholder="* Email" name="email" aria-label="Email" style="width: 48%">
-            <input type="text" placeholder=" Phone" name="phone" aria-label="Phone" style="width: 48%">
-
-            <div class="customize-select" data-visible="request_appointment,meet_physician,tour,more_information,leave_suggestion" id="modal_location_county" style="display: none;">
-
-                <div class="select-wrapper">
-
-                    <span class="current-selection" data-default="Select Location">Select Location</span>
-                    <ul></ul>
-                    <input type="hidden" data-column="modal_location_county" name="modal_location_county" value="-1">
-
-                </div>
-            </div>
-            <div class="customize-select" data-visible="request_appointment,meet_physician" id="modal_physician" style="display: none;">
-
-                <div class="select-wrapper">
-
-                    <span class="current-selection" data-default="Any Physician">Any Physician</span>
-                    <ul></ul>
-
-                    <input type="hidden" data-column="modal_physician" name="modal_physician" value="-1">
-
-                </div>
-            </div>
-            <input type="text" class="modal_date modal-show hasDatepicker" data-visible="request_appointment,tour,meet_physician" placeholder="Date" name="modal_date" aria-label="Date" id="dp1586371457020" style="display: block;width: 48%">
-            <div class="customize-select modal-show" data-visible="request_appointment,tour,meet_physician" id="modal_date_time" style="width: 100% !important; display: block;margin-bottom: 30px">
-
-                <div class="select-wrapper">
-
-                    <span class="current-selection">Any</span>
-                    <ul>
-                        <li class="option-selection" data-val="any">
-                            <span>Any</span>
-                        </li>
-
-                        <li class="option-selection" data-val="morning">
-                            <span>Morning</span>
-                        </li>
-
-                        <li class="option-selection" data-val="afternoon">
-                            <span>Afternoon</span>
-                        </li>
-                    </ul>
-
-                    <input type="hidden" data-column="modal_date_time" name="modal_date_time" value="any">
-
-                </div>
-            </div>
-            <textarea name="modal_notes" class="modal-show" data-visible="request_appointment,tour,meet_physician" rows="4" placeholder="Notes" style="display: block;"></textarea>
-
-            <textarea name="modal_message" data-visible="leave_suggestion,more_information,other" class="modal-show" rows="4" placeholder="Message" style="display: none;"></textarea>
-            
-            <fieldset class="modal-show" data-visible="request_appointment,leave_suggestion,tour,meet_physician,more_information" style="display: block;">
-                <legend><p>I would like to be contacted via</p></legend>
-                <input type="radio" name="modal_contacted_via" value="email" id="contacted_via_email"><label for="contacted_via_email">Via Email</label>
-                <input type="radio" name="modal_contacted_via" value="phone" id="contacted_via_phone"><label for="contacted_via_phone">Via Phone</label>
-            </fieldset>
-
-            <fieldset class="modal-show" data-visible="other" style="display: none;">
-                <input type="checkbox" name="modal_contact_me" id="modal_contact_me">
-                <legend><p>I would like somebody to contact me.</p></legend>
-                <input type="radio" name="modal_contacted_via" value="email" id="contacted_via_email"><label for="contacted_via_email">Via Email</label>
-                <input type="radio" name="modal_contacted_via" value="phone" id="contacted_via_phone"><label for="contacted_via_phone">Via Phone</label>
-            </fieldset>
-
-            <p class="disclaimer modal-show" data-visible="request_appointment,tour,meet_physician" id="action-requested" style="display: block;">Please note we cannot guarantee the date/time you have selected. We will call or email you with availabilities and schedule your  <span>meet</span>.</p>
-        
-        </div>
-
-        <input type="hidden" class="required-input" name="g_response" value="">
-        <a href="" class="styled-link submit-appointment" style="width: 95%">Submit</a>
-
+        <%= render 'shared/request_appointment_form' %>
         <p class="disclaimer">Please do not submit any sensitive medical information. If you are in need of medical attention, please see a physician or call 911 in case of a medical emergency.</p>
     </div>
     </div>
@@ -93,11 +18,11 @@
 <banner class="banners">
 	<%= image_tag("dots.svg", class:"banner-dots", alt: "triangle made of blue dots") %>
 </banner>
-<main class="content" id="content"> 
+<main class="content" id="content">
 	<div class="section dark-header">
     	<div class="content-contain">
         	<h1 class="smallest alt-color">Contact Us</h1>
-        	<a href="#" class="styled-link no-border alt-color mb">1-833-220-8654</a>
+        	<a href="#" class="styled-link no-border alt-color mb" style="text-decoration: none;">1-833-220-8654</a>
     	</div>
 	</div>
 
@@ -106,24 +31,10 @@
     	<div class="content-contain">
 
        		<div class="half">
-            
+
             	<h2 class="smallest">We'd Love to Hear from You</h2>
             	<p class="bigger">Please fill out the form below to let us know how we may assist you. If you would like more information, please give us a call and we’ll be happy to help.</p>
-
-            
-            
-            	<form method="POST" id="contact" action="#response" autocomplete="off">
-
-                	<input type="hidden" name="CsrfToken" value="b92f3e2bd0afda3a71d620bbf27b1caf87ee7c04532c7e79b99843ea637da3d1">
-                	<input type="hidden" name="contact_submitted" value="true">
-                	<input type="text" name="name" aria-label="Your Name" placeholder="* Your Name" required="">
-                	<input type="email" name="email" aria-label="Email" placeholder="* Email" required="">
-                	<input type="text" name="subject" aria-label="Subject" placeholder="* Subject" required="">
-                	<textarea name="message" rows="5" aria-label="Message" placeholder="Message" required=""></textarea>
-                	<div class="g-recaptcha" data-sitekey="6Lfkjr0UAAAAAIjjETFe1v84fqu4WAx6Y3rWdRIW" id="contact-recaptcha" required=""><div style="width: 304px; height: 78px;"><div></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div>
-                	<input type="hidden" class="required-input" name="g_response" value="" required="">
-                	<input type="submit" class="styled-link" value="Submit">
-            	</form>
+            <%= render 'shared/contact_us_form' %>
         	</div>
 
         	<div class="half">
@@ -134,14 +45,15 @@
                 		<%= image_tag("icons-05.svg", alt: "Contact Icon") %>
                     	<h3 class="alt-h3">1-833-220-8654</h3>
                 	</div>
-                	<a href="#" class="styled-link">Call Us</a>
+                	<a href="tel:18332208654" class="styled-link" style="text-decoration: none;">Call Us</a>
             	</div>
 
             	<div class="sub-section second-bg">
             		<%= image_tag("icons-06.svg", alt: "Address Icon") %>
                 	<h3 class="alt-h3">Find Your Location</h3>
                 	<p>If you are trying to contact your location to make an appointment or for any other questions, please locate your center:</p>
-                	<a href="#" class="styled-link">View Locations</a>
+<!--                	<a href="#" class="styled-link" style="text-decoration: none;">View Locations</a>-->
+                <%= link_to 'View Locations', our_locations_path, class: 'styled-link', style: "text-decoration: none;"%>
                 	 <button class="styled-link request-appointment" data-toggle="modal" data-target="#exampleModal3">Meet a Physician</button>
             	</div>
         	</div>

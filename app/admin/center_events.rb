@@ -8,6 +8,7 @@ ActiveAdmin.register CenterEvent do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
+  config.sort_order = 'id_asc'
    permit_params :center_id, :title, :approved, :start_date, :end_date,
                  :description, :admin_id, :created_by_id, :start_time, :end_time
   #
@@ -20,13 +21,17 @@ ActiveAdmin.register CenterEvent do
   # end
 
   member_action :approve, method: :put do
-    resource.approved!
+    resource.approved = 'approved'
+    resource.save(validate: false)
     redirect_to resource_path, notice: "Locked!"
   end
 
-  batch_action :approve_selected do |events_id|
+  batch_action :approve_selected,
+               if: proc { request.params['scope'] == 'my_pending_event' && current_user.role == 'SuperAdmin' } do |events_id|
     events_id.each do |event_id|
-      CenterEvent.find(event_id).approved!
+      event = CenterEvent.find(event_id)
+      event.approved = 'approved'
+      event.save(validate: false)
     end
     redirect_to admin_center_events_path(scope: 'my_pending_event')
   end
@@ -38,7 +43,8 @@ ActiveAdmin.register CenterEvent do
       f.inputs "Center Event" do
         f.input :center
         f.input :created_by_id, as: :hidden, :input_html => { value: current_user.id}
-        f.input :admin, as: :select, collection: User.where(role: User.roles[:SuperAdmin]).map{ |user| [user.full_name, user.id]}
+        f.input :admin, as: :select, collection: User.where(role: User.roles[:SuperAdmin])
+                                                   .map{ |user| [user.full_name, user.id]}
         f.input :title
         columns class: 'working-hours' do
           columns class: 'hours' do
@@ -79,7 +85,10 @@ ActiveAdmin.register CenterEvent do
      column :created_at
      column :updated_at
      actions defaults: true do |event|
-       link_to 'Approve', approve_admin_center_event_path(event)
+       if request.params['scope'] == 'my_pending_event' ||
+         (current_user.role == 'SuperAdmin' && event.pending? && current_user.unable_to_destroy)
+         link_to 'Approve', approve_admin_center_event_path(event), method: :put
+       end
      end
    end
 

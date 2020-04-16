@@ -1,3 +1,4 @@
+
 $initTop = 0;
 $(document).ready(function() {
 
@@ -23,10 +24,6 @@ $(document).ready(function() {
             var map = $('.hover-map.selected').data('location')+"-map";
             $('.location-map').addClass(map);
         }
-    });
-
-    $(".modal_date").datepicker({
-        dateFormat: 'D M dd, yy'
     });
 
     // $('.section').on('click','.hover-map',function(e){
@@ -417,7 +414,7 @@ $(document).ready(function() {
         }
         else {
 
-            var urlContact = composeUrl('includes/ajax_contact_modal.php','');
+            var urlContact = composeUrl('includes','');
             var name = modal.find('input[name="name"]').val();
             var email = modal.find('input[name="email"]').val();
             var phone = modal.find('input[name="phone"]').val();
@@ -471,7 +468,7 @@ $(document).ready(function() {
 
         cleanModal(1);
         var selectedValue = $(this).val();
-        var searchLocation = composeUrl('includes/ajax_locations_modal.php','');
+        var searchLocation = composeUrl('includes','');
 
         $.ajax({
             type: "POST",
@@ -1014,3 +1011,4 @@ changeView = function(){
         }
     }
 };
+

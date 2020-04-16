@@ -5,6 +5,7 @@ ActiveAdmin.register Doctor do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
+  config.sort_order = 'id_asc'
    permit_params :name, :language,:education,:avatar,
                  :certifications, :biography, :video_id, :image, doctor_category_ids: [],
                  physician_type_ids: [] , center_ids:[]

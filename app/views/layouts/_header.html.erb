@@ -1,27 +1,32 @@
-<header class="header">
+<complementary class="pre-content">
+  <div class="pre-section">
     <div class="content-contain">
-
-        <div class="logo">
-            <a href="#" class="mb" aria-label="Visit the Home Page of Conviva Care Centers">
-                <img class="dt" src="/logos/care-center-black.svg" alt="Conviva Care Centers logo">
-                <img class="mb" src="/logos/care-center-black-tm.svg" alt="Conviva Care Centers logo">
-            </a>
-        </div>
-
-        <nav class="nav" aria-label="Header Navigation">
-
-            <ul>
-                 <li><a href="/home/index" class="current-page">Home</a></li>
-                  <li><a href="/about">About</a></li>
-                  <li><a href="/services">Services</a></li>
-                  <li><a href="/our_locations">Locations</a></li>
-                  <li><a href="/physicians">Physicians</a></li>
-                  <li><a target="_blank" href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93b3JrZm9yY2Vub3cuYWRwLmNvbS9tYXNjc3IvZGVmYXVsdC9tZGYvcmVjcnVpdG1lbnQvcmVjcnVpdG1lbnQuaHRtbD9jaWQ9YTRjZGE1NGUtOWM5MS00MTBiLWI0NTAtNzI4NzRmYzQ5MmIwJmNjSWQ9MTkwMDAxMDFfMDAwMDAxJnR5cGU9TVAmbGFuZz1lbl9VUw">Careers</a></li>
-                  <li><a href="/contact">Contact</a></li>
-            </ul>
-
-        </nav>
-
-        <a href="https://proxy-sea.hidemyass-freeproxy.com/proxy/en-ca/aHR0cHM6Ly93d3cuY29udml2YWNhcmVjZW50ZXJzLmNvbS8#" class="mb" id="mobile-nav" aria-label="Click to view navigation"><span class="fa fa-menu" aria-hidden="true"></span></a>
+      <a href="#content" class="skip-navigation dt" aria-label="Skip the navigation menu and go to the content of the site" style="text-decoration: none;">Skip Navigation</a>
+    <span class="choose-location" data-toggle="modal" data-target="#exampleLoationModal">Choose My Location</span>
     </div>
+  </div>
+</complementary>
+<header class="header">
+  <div class="content-contain">
+    <div class="logo">
+      <a href="#" class="mb" aria-label="Visit the Home Page of Conviva Care Centers">
+        <%= image_tag("care-center-black.svg", class:"dt", alt: "Conviva Care Centers logo") %>
+        <%= image_tag("care-center-black-tm.svg",class:"mb" , alt: "Conviva Care Centers logo") %>
+      </a>
+    </div>
+    <nav class="nav" aria-label="Header Navigation">
+      <%= render 'layouts/menu_list' %>
+    </nav>
+    <a href="#" class="mb" id="mobile-nav" aria-label="Click to view navigation"><span class="fa fa-menu" aria-hidden="true"></span></a>
+  </div>
 </header>
+
+<complementary class="modal modal-location" id="exampleLoationModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="content-contain">
+        <div class="modal-body" style="display: block;">
+          <p>Search for your location and set as default to quickly access your Care Center's information and homepage.</p>
+          <button class="styled-link current-locations modal-locations" onclick="searchWithCurrentLocation('location')">Search by Current Location</button>
+          <%= link_to 'Search all Locations',our_locations_path, class: 'styled-link selected nearest-locations', style: 'text-decoration: none;' %>
+        </div>
+    </div>
+</complementary>

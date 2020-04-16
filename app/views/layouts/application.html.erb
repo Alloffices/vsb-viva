@@ -1,104 +1,75 @@
-<!DOCTYPE html>
 <html>
   <head>
     <title>VsbViva</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://www.convivacarecenters.com/css/slick.css?3" rel="stylesheet">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://use.fortawesome.com/3d1ec8f9.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
-    <script src="https://www.convivacarecenters.com/js/ofi.browser.js"></script>
+    
   </head>
 
-  <body class='<%= controller_name %>'>
-    <header class="header">
-      <div class="content-contain">
-          <div class="logo">
-              <a href="#" class="mb" aria-label="Visit the Home Page of Conviva Care Centers">
-                  <%= image_tag("care-center-black.svg", class:"dt", alt: "Conviva Care Centers logo") %>
-                  <%= image_tag("care-center-black-tm.svg",class:"mb" , alt: "Conviva Care Centers logo") %>
-              </a>
-          </div>
+  <body class='<%= controller_name %>'  >
+    
+    <%= render 'layouts/header' %>
+    <% flash.each do |key, value| %>
 
-          <nav class="nav" aria-label="Header Navigation">
-
-              <ul>
-                  <li><a href="/home/index" class="current-page">Home</a></li>
-                  <li><a href="/about">About</a></li>
-                  <li><a href="/services">Services</a></li>
-                  <li><a href="/our_locations">Locations</a></li>
-                  <li><a href="/physicians">Physicians</a></li>
-                  <li><a target="_blank" href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US">Careers</a></li>
-                  <li><a href="/contact">Contact</a></li>
-              </ul>
-
-          </nav>
-
-          <a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US"><span class="fa fa-menu" aria-hidden="true"></span></a>
-      </div>
-    </header>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
     <%= yield %>
-    <footer class="footer">
-
-            <div class="content-contain">
-                
-                <div class="sub-section">
-                    
-                    <div class="logo">
-                      <%= image_tag("care-center-black.svg", class:"dt", alt: "Conviva Care Centers logo") %>
-                        <a href="#" class="mb" aria-label="Visit the Home Page of Conviva Care Centers"><%= image_tag("care-center-black-tm.svg",class:"mb" , alt: "Conviva Care Centers logo") %></a>
-                    </div>
-
-                    <nav class="nav" aria-label="Footer Navigation">
-
-                        <ul>
-                            <li><a href="/home/index">Home</a></li>
-                            <li><a href="/about">About</a></li>
-                            <li><a href="/services">Services</a></li>
-                            <li><a href="/our_locations">Locations</a></li>
-                            <li><a href="/physicians">Physicians</a></li>
-                            <li><a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" target="_blank">Careers</a></li>
-                            <li><a href="/contact">Contact</a></li>
-                        </ul>
-                    </nav>                    
-                </div>
-
-                <div class="sub-section">
-
-                    <span class="legal">
-                        <a href="#" target="_blank">Privacy Policy</a>
-                        <a href="#" target="_blank">Disclaimer</a>
-                        <a href="#" target="_blank">HIPAA Notice of Privacy</a>
-                    </span>
-
-                    <p class="all_rights">Conviva Care Centers © 2020 All Rights Reserved.</p>
-
-                    <div class="ada-compliance">
-
-                        <ul class="social">
-                            <li><a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" target="_blank" title="Instagram" aria-label="Open Conviva Care Centers Instagram page in a new window"><span class="fa fa-instagram" aria-hidden="true"></span></a></li>
-                            <li><a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" target="_blank" title="Facebook" aria-label="Open Conviva Care Centers Facebook page in a new window"><span class="fa fa-facebook-box" aria-hidden="true"></span></a></li>
-                        </ul>
-                        
-                        <a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a4cda54e-9c91-410b-b450-72874fc492b0&ccId=19000101_000001&type=MP&lang=en_US" target="_blank">
-                            <%= image_tag("wcag2aa.svg", alt: "Conviva Care Centers logo") %>
-                            <span>Level AA Conformance <br> W3C Web Content Accessibility</span>
-                        </a>
-
-                    </div>
-
-                </div>
-            </div>
-        </footer>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-        <script src="https://www.convivacarecenters.com/js/moment.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-        <script src="https://www.convivacarecenters.com/js/slick.js?2"></script>
-        <script src="https://www.convivacarecenters.com/js/customize-select.js"></script>
-        <script src="https://www.convivacarecenters.com/js/script.min.js?31"></script>
+    <%= render 'layouts/footer' %>
+       
   </body>
+<script>
+  $('a').css('text-decoration', 'none');
+  $(document).ready(function(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+    function showPosition(position) {
+      if (<%= session[:lat].blank?%> && <%= session[:long].blank?%> ) {
+        $.ajax({
+          type: "GET",
+          url: "/set_location",
+          data: {lat: position.coords.latitude, long: position.coords.longitude},
+          success: function (data) {},
+          error: function (e) {}
+        });
+      }
+    }
+  });
+</script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      jQuery.noConflict();
+      $(".modal_date").datepicker({dateFormat:"D M dd, yy"});
+    });
+
+    function searchWithCurrentLocation(source){
+      if (navigator.geolocation) {
+        if(source === 'location') {
+          navigator.geolocation.getCurrentPosition(searchCenterWithLocation);
+        } else {
+          navigator.geolocation.getCurrentPosition(searchPhysicianWithLocation);
+        }
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function searchCenterWithLocation(position) {
+      var url = "<%= root_url %>" + 'our_locations/search?lat=' + position.coords.latitude + '&long=' + position.coords.longitude;
+      window.location.replace(url);
+    }
+
+    function searchPhysicianWithLocation(position) {
+      var url = "<%= root_url %>" + 'physicians/search?lat=' + position.coords.latitude + '&long=' + position.coords.longitude;
+      window.location.replace(url);
+    }
+  </script>
 </html>

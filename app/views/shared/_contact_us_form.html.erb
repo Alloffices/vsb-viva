@@ -1,0 +1,7 @@
+<%= form_for(@contact, url: '/contact' ) do |f| %>
+  <%= f.text_field :name, placeholder: '* Your Name', 'aria-label': '* Your Name', required: true %>
+  <%= f.text_field :email, placeholder: '* Email', 'aria-label': '* Email', required: true %>
+  <%= f.text_field :subject, placeholder: '* Subject', 'aria-label': '* Subject', required: true %>
+  <%= f.text_area :message, row: 5, placeholder: '* Message', 'aria-label': '* Message', required: true %>
+  <%= f.submit 'Submit', class: 'styled-link'%>
+<% end %>

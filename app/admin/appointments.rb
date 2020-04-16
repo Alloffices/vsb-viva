@@ -5,6 +5,7 @@ ActiveAdmin.register Appointment do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
+  
   permit_params :your_name, :email, :phone, :date, :time, :notes, :contacted_via ,only: [:show]
   actions :all, :except => [:new]
   # or

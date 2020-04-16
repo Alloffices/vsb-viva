@@ -6,6 +6,7 @@ ActiveAdmin.register Center do
   # Uncomment all parameters which should be permitted for assignment
 
   #
+  config.sort_order = 'id_asc'
   permit_params :name, :state, :address_1, :address_2, :city, :county,:location_description_id, :primary_phone, :additional_phones,
                 :fax,  :monday_hours, :tuesday_hours, :wednesday_hours, :center_admin, :latitude, :longitude,
                 :thursday_hours, :friday_hours, :saturday_hours, :sunday_hours, :special_hours, :calendar_notes,

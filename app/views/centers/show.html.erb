@@ -1,102 +1,53 @@
 <div class="modal fade" id="exampleModal021" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="width: 1000px;position: absolute;left: -58%;padding: 10%;">
+    <div class="modal-content modal-responsive" >
       <div class="modal-body" style="display: block;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: -42px;top: -39px;">
           <span aria-hidden="true">Close</span>
         </button>
 
-        <h2 style="text-align:center;">Request a Tour</h2>
+        <h2 class="modelheader" style="text-align:center;" >Request a Tour</h2>
         <p class="message"></p>
-
-        <div class="row">
-
-          <input type="text" class="required-input" placeholder="* Your Name" name="name" aria-label="Your Name" style="width: 48%">
-          <input type="email" class="required-input" placeholder="* Email" name="email" aria-label="Email" style="width: 48%">
-          <input type="text" placeholder=" Phone" name="phone" aria-label="Phone" style="width: 48%">
-
-          <div class="customize-select" data-visible="request_appointment,meet_physician,tour,more_information,leave_suggestion" id="modal_location_county" style="display: none;">
-
-            <div class="select-wrapper">
-
-              <span class="current-selection" data-default="Select Location">Select Location</span>
-              <ul></ul>
-              <input type="hidden" data-column="modal_location_county" name="modal_location_county" value="-1">
-
-            </div>
-          </div>
-          <div class="customize-select" data-visible="request_appointment,meet_physician" id="modal_physician" style="display: none;">
-
-            <div class="select-wrapper">
-
-              <span class="current-selection" data-default="Any Physician">Any Physician</span>
-              <ul></ul>
-
-              <input type="hidden" data-column="modal_physician" name="modal_physician" value="-1">
-
-            </div>
-          </div>
-          <input type="text" class="modal_date modal-show hasDatepicker" data-visible="request_appointment,tour,meet_physician" placeholder="Date" name="modal_date" aria-label="Date" id="dp1586368882593" style="display: block;width: 48%">
-          <div class="customize-select modal-show" data-visible="request_appointment,tour,meet_physician" id="modal_date_time" style="width: 100% !important; display: block;margin-bottom: 30px">
-
-            <div class="select-wrapper">
-
-              <span class="current-selection">Any</span>
-              <ul>
-                <li class="option-selection" data-val="any">
-                  <span>Any</span>
-                </li>
-
-                <li class="option-selection" data-val="morning">
-                  <span>Morning</span>
-                </li>
-
-                <li class="option-selection" data-val="afternoon">
-                  <span>Afternoon</span>
-                </li>
-              </ul>
-
-              <input type="hidden" data-column="modal_date_time" name="modal_date_time" value="any">
-
-            </div>
-          </div>
-          <textarea name="modal_notes" class="modal-show" data-visible="request_appointment,tour,meet_physician" rows="4" placeholder="Notes" style="display: block;"></textarea>
-
-          <textarea name="modal_message" data-visible="leave_suggestion,more_information,other" class="modal-show" rows="4" placeholder="Message" style="display: none;"></textarea>
-
-          <fieldset class="modal-show" data-visible="request_appointment,leave_suggestion,tour,meet_physician,more_information" style="display: block;">
-            <legend><p>I would like to be contacted via</p></legend>
-            <input type="radio" name="modal_contacted_via" value="email" id="contacted_via_email"><label for="contacted_via_email">Via
-            Email</label>
-            <input type="radio" name="modal_contacted_via" value="phone" id="contacted_via_phone"><label for="contacted_via_phone">Via
-            Phone</label>
-          </fieldset>
-
-          <fieldset class="modal-show" data-visible="other" style="display: none;">
-            <input type="checkbox" name="modal_contact_me" id="modal_contact_me">
-            <legend><p>I would like somebody to contact me.</p></legend>
-            <input type="radio" name="modal_contacted_via" value="email" id="contacted_via_email"><label for="contacted_via_email">Via
-            Email</label>
-            <input type="radio" name="modal_contacted_via" value="phone" id="contacted_via_phone"><label for="contacted_via_phone">Via
-            Phone</label>
-          </fieldset>
-
-          <p class="disclaimer modal-show" data-visible="request_appointment,tour,meet_physician" id="action-requested" style="display: block;">Please
-            note we cannot guarantee the date/time you have selected. We will call or email you with availabilities and
-            schedule your <span>tour</span>.</p>
-
-        </div>
-        <input type="hidden" class="required-input" name="g_response" value="">
-        <a href="" class="styled-link submit-appointment" style="width: 95%">Submit</a>
-
+        <%= render 'shared/request_appointment_form' %>
         <p class="disclaimer">Please do not submit any sensitive medical information. If you are in need of medical
           attention, please see a physician or call 911 in case of a medical emergency.</p>
       </div>
     </div>
   </div>
 </div>
-<main class="content" id="content"> 
+<complementary class="modal modal-general modal-events" id="exampleEventModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="content-contain">
+        <div class="modal-body" id="eventmodelbody"style="display: block;">
+            <span class="close-modal" data-dismiss="modal" aria-label="Close">Close</span>
+            <h2 id="modal_contact_title">Silver Sneakers Yoga</h2>
+            <h3 id="modal_contact_disc">Wed, May 01 2019 09:00 am - 10:00 am</h3>
+            <p></p>
+
+            <input type="hidden" id="event-id">
+
+            <p>Share event with</p>
+
+            <div class="full">
+
+                <a href="#" class="share-google-calendar share-event styled-link selected no-wide" data-type="google"> Google</a>
+                <a href="#" class="share-icalendar share-event styled-link no-wide" data-type="icalendar">iCalendar</a>
+                <a href="#" class="share-outlook share-event styled-link no-wide" data-type="outlook">Outlook</a>
+                <a href="#" style="display: none;" id="open-google" target="_blank" aria-label="Auxiliar link to save event in Google Calendar"></a>
+            </div>
+
+            <form method="post" action="share_icalendar" id="download-event-file">
+                <input type="hidden" name="date_start" value="2019-05-01 09:00:00">
+                <input type="hidden" name="date_end" value="2019-05-01 10:00:00">
+                <input type="hidden" name="share_with" value="icalendar">
+                <input type="hidden" name="description" value="">
+                <input type="hidden" name="summary" value="Silver Sneakers Yoga">
+                <input type="hidden" name="_token" value="9ff1b3bf9261b7b861574e415a9984b79b32c105222b707fbffc2c99d9c65123">
+            </form>
+        </div>
+    </div>
+</complementary>
+<main class="content" id="content">
 <div class="section dark-header">
     <div class="content-contain">
         <p class="center-city"><%= @center.city%>,<%= @center.state%></p>
@@ -105,39 +56,41 @@
 </div>
 <div class="section">
     <div class="center-map">
-        <iframe title="Iframe Map showing the location of the Conviva Care Center Flagler" style="border:0; height:200px;" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDAszf8K0NEL48ix1XU5N9ct5ij3gcGXZI&amp;q=25.77208,-80.23823" allowfullscreen="" width="100%" height="200"></iframe>
+        <iframe title="Iframe Map showing the location of the Conviva Care Center Flagler" style="border:0; height:200px;" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDAszf8K0NEL48ix1XU5N9ct5ij3gcGXZI&amp;q=<%=@center.latitude%>,<%=@center.longitude%>" allowfullscreen="" width="100%" height="200"></iframe>
     </div>
 </div>
 <div class="section">
-    <div class="content-contain">        
+    <div class="content-contain">
         <div class="sub-section">
             <div class="center-info">
                 <%= image_tag("icons-06.svg", alt: "Address Icon") %>
                 <br>
                 <br>
-                <h3 style="margin-left: 35%">Address</h3>
+                <h3 >Address</h3>
                 <p class="bigger"><%= @center.address_1 %></p>
                 <p class="bigger"><%=@center.city%>,<%=@center.state%> <%=@center.zip_code%></p>
-                <a href="#" class="styled-link" target="_blank">Get Directions</a>
+                <a href="#" class="styled-link" target="_blank" style="text-decoration: none;">Get Directions</a>
             </div>
             <div class="center-info">
                 <%= image_tag("icons-08.svg", alt: "Center Hours Icon") %>
                 <br>
                 <br>
-                <h3 style="margin-left: 20%">Center Hours</h3>
-                <p class="bigger">Monday - Friday</p>
-                <p class="bigger bottom">08:00am - 05:00pm</p>
+                <h3 >Center Hours</h3>
+              <% @center.get_timing.each do |t| %>
+                <p class="bigger"><%= t.stringify_keys.keys.first.split().map{|key| key.capitalize}.join(' ') %></p>
+                <p class="bigger bottom"><%= Center.format_time(t[t.keys.first][0]) %> - <%= Center.format_time(t[t.keys.first][1]) %></p>
+              <% end %>
                 <button class="styled-link request-appointment" data-toggle="modal" data-target="#exampleModal021">Request a Tour</button>
-                <a href="#" class="styled-link">Events Calendar</a>
+                <a href="#" class="styled-link" style="text-decoration: none;">Events Calendar</a>
             </div>
             <div class="center-info">
                 <%= image_tag("icons-05.svg", alt: "Contact Icon") %>
                 <br>
                 <br>
-                <h3 style="margin-left: 35%">Contact</h3>
+                <h3 >Contact</h3>
                 <p class="bigger"><%=@center.primary_phone%></p>
-                <p class="bigger">Fax: <%=@center.fax%></p>                
-                <a href="#" class="styled-link">Call Us</a>
+                <p class="bigger">Fax: <%=@center.fax%></p>
+                <a href="#" class="styled-link" style="text-decoration: none;">Call Us</a>
             </div>
         </div>
         <div class="sub-section">
@@ -146,17 +99,19 @@
                     <ul class="list-styled doctor-list">
                       <% @center.doctors.each do |doctor| %>
                         <li>
-                            <a aria-label="Visit Jocelyn Prettell Bio Page" href="https://www.convivacarecenters.com/physician/conviva+care+center+flagler/jocelyn_prettell">
+
+                            <a aria-label="Visit Jocelyn Prettell Bio Page" href="/physicians/<%=doctor.name%>" style="text-decoration: none;">
+
                             <img src="<%=doctor.avatar%>" alt="Jocelyn Prettell Thumbnail" class="doctor-thumbnail">
                             <span class="overlay">VIEW<br>BIO</span><%=doctor.name%>,<%= doctor.physician_types.map{|p| p.name}.join(',')%></a>
-                        </li>    
-                      <%end%>                                                                                        
+                        </li>
+                      <%end%>
                     </ul>
                     <div class="second-bg">
                         <h3>In House Services</h3>
                             <ul class="list-styled">
                                 <% @center.services.each do |service|%>
-                                  <li> <%=service.name%></li>  
+                                  <li> <%=service.name%></li>
                                 <%end%>
 
                             </ul>
@@ -175,7 +130,7 @@
                         <p><%=@center.center_admin%></p>
                         <div class="second-bg">
                             <h3> Insurances Accepted</h3>
-                            <div style="color:#0c495b;font-size:21px;line-height:30px;">We accept most Medicare Advantage plans, for more information please call <a href="tel:18332208654">1-833-220-8654</a></div>
+                            <div style="color:#0c495b;font-size:21px;line-height:30px;">We accept most Medicare Advantage plans, for more information please call <a href="tel:18332208654" style="text-decoration: none;">1-833-220-8654</a></div>
                         </div>
                     </div>
                     <div class="half gallery-slider">
@@ -189,8 +144,9 @@
         </div>
 
         <div class="section" id="events">
+
             <div class="content-contain">
-               Calender 
+                <div class="calendar stop-parent-movement" id="events-calendar"></div>
             </div>
         </div>
         <div class="shadow"></div>
@@ -200,4 +156,53 @@
     var body = document.body;
     body.classList.remove("our_locations");
     body.classList.add("center");
+
+    // console.log('<%=@center.center_events%>');
+
+    function eventCalendar(events) {
+      return jQuery(function($) {
+        return $('#events-calendar').fullCalendar({
+          header:false,
+          events:events,
+          header:{
+            left:   'prev',
+            center: 'title',
+            right:  'next'
+          },
+          eventClick: function(info) {
+            jQuery(async function($) {
+              $('#modal_contact_title').text(info.title);
+              $('#event-id').val(info.id);
+              $('#modal_contact_disc').text(
+                info.start.utc().format('ddd, MMMM DD YYYY ') + moment(info.start_time).utc().format("LT") + " - " + moment(info.end_time).utc().format('LT')
+              );
+            });
+            var model=document.getElementById("exampleEventModal");
+            var modelbody=document.getElementById("eventmodelbody");
+            modelbody.style.display='block';
+            model.classList.add("on");
+          }
+        });
+      });
+    };
+    function clearCalendar() {
+      $('#events-calendar').fullCalendar('delete');
+      $('#events-calendar').html('');
+    };
+
+
+    $( document ).ready(async function() {
+      var events = []
+      await $.ajax({
+        type: "get",
+        url: "/centers/events?center_id=" + <%= @center.id %>,
+        success: function (data) {
+          events = data.events
+        },
+        error: function (e) {}
+      });
+      eventCalendar(events);
+      $('.fc-scroller').css({'overflow':'visible'});
+      console.log( "ready!" );
+    });
 </script>
