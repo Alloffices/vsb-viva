@@ -9903,7 +9903,7 @@ body.about .section:nth-of-type(4) .sub-section:last-of-type {
 }
 /* line 478, ../sass/screen.scss */
 body.about .section:nth-of-type(4) .sub-section:last-of-type:after {
-  background: url(/images/Conviva_PG_on_dark.png) no-repeat;
+  background: url(../images/Conviva_PG_on_dark.png) no-repeat;
   background-size: contain;
   background-position: right bottom;
   width: 39.13043%;

@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   def create
     appointment = Appointment.new(appointment_params)
     if appointment.save
-      flash[:success] = "appointment create successfully"
+      flash[:success] = "appointment created successfully"
       redirect_back(fallback_location:"/")
     else
       flash[:danger] = "unable to create appointment please try again"

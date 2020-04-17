@@ -29,7 +29,11 @@
 
       <% if @doctors.present? %>
       <div class="second-bg list-container search-results doctor-results" id="search-results">
-        <h1 class="smallest">Search Results for <span><%=params[:search]%></span></h1>
+        <% if @location.present?%>
+        <h1 class="smallest">Search Results for <span><%=@location.first.address%></span></h1>
+        <%else%>
+          <h1 class="smallest">Search Results for <span><%=params[:search]%></span></h1>
+        <%end%>
         <div class="container">
           <% @doctors.each do |doctor| %>
           <a class="item"  href="/physicians/<%= doctor.name %>" style="text-decoration: none;">
@@ -68,3 +72,52 @@
   var body = document.footer;
   body.classList.remove("hide");
 </script>
+<script type="text/javascript">
+    
+$('a').css('text-decoration', 'none');
+  $(document).ready(function(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+    function showPosition(position) {
+      if (<%= session[:lat].blank?%> && <%= session[:long].blank?%> ) {
+        $.ajax({
+          type: "GET",
+          url: "/set_location",
+          data: {lat: position.coords.latitude, long: position.coords.longitude},
+          success: function (data) {},
+          error: function (e) {}
+        });
+      }
+    }
+  });
+
+    $(document).ready(function(){
+      jQuery.noConflict();
+      $(".modal_date").datepicker({dateFormat:"D M dd, yy"});
+    });
+
+    function searchWithCurrentLocation(source){
+      if (navigator.geolocation) {
+        if(source === 'location') {
+          navigator.geolocation.getCurrentPosition(searchCenterWithLocation);
+        } else {
+          navigator.geolocation.getCurrentPosition(searchPhysicianWithLocation);
+        }
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function searchCenterWithLocation(position) {
+      var url = "<%= root_url %>" + 'our_locations/search?lat=' + position.coords.latitude + '&long=' + position.coords.longitude;
+      window.location.replace(url);
+    }
+
+    function searchPhysicianWithLocation(position) {
+      var url = "<%= root_url %>" + 'physicians/search?lat=' + position.coords.latitude + '&long=' + position.coords.longitude;
+      window.location.replace(url);
+    }
+  </script>

@@ -1,5 +1,4 @@
 <div class="modal fade " id="exampleModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-
   <div class="modal-dialog" role="document">
     <div class="modal-content modal-responsive">
       <div class="modal-body" style="display: block;">
@@ -106,7 +105,7 @@
       <div id="location">
         <%= render 'shared/search_location_form' %>
       </div>
-      <div id="physician">
+      <div id="physician" style="display: none;">
         <%= render 'shared/search_physician_form' %>
       </div>
     </div>
@@ -130,86 +129,78 @@
     <div class="sub-section second-bg">
       <h2>We Are Here to Serve</h2>
       <p class="services-intro">Each community that hosts a Conviva Care Center carries our dedication to its members that we have the privilege to call our patients. Conviva represents a commitment to the highest standards of medical care–starting with primary care and extending throughout each patient’s healthcare experience, including specialists, in house services, transportation and much more…</p>
-      <div class="flexslider-services slides" id="flexslider-services">
-        <div class="flex-nav-prev slick-arrow" style=""><span class="flex-prev"></span></div>
-        <div class="slick-list draggable">
-          <div class="slick-track" style="opacity: 1; width: 10098px; transform: translate3d(-5236px, 0px, 0px); transition: transform 500ms ease 0s;">
-            <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1" >
-                <%= image_tag("icons-11.svg",alt: "Lab Drawing Stations icon") %>
-                <h3>Lab Drawing<br>Stations</h3>
-              </a>
-            </div>
-            <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1">
-                <%= image_tag("icons-19.svg",alt: "Nebulizer Treatments icon") %>
-                <h3>Nebulizer<br>Treatments</h3>
-              </a>
-            </div>
-            <div class="slick-slide slick-active" data-slick-index="2" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1">
-                <%= image_tag("icons-02.svg",alt: "Transportation icon") %>
-
-                <h3>Transportation</h3>
-              </a>
-            </div>
-            <div class="slick-slide" data-slick-index="4" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1">
-                <%= image_tag("icons-01.svg",alt: "Primary Care Physicians icon") %>
-                <h3>Primary Care<br>Physicians</h3>
-              </a>
-            </div>
-            <div class="slick-slide" data-slick-index="5" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1">
-                <%= image_tag("icons-12.svg",alt: "Wound Care icon") %>
-                <h3>Wound<br>Care</h3>
-              </a>
-            </div>
-            <div class="slick-slide" data-slick-index="6" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1">
-                <%= image_tag("icons-13.svg",alt: "Flu &amp; Pneumonia icon") %>
-                <h3>Flu &amp; Pneumonia<br>Vaccines</h3>
-              </a>
-            </div>
-            <div class="slick-slide" data-slick-index="7" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1">
-                <%= image_tag("icons-14.svg",alt: "EKG icon") %>
-                <h3>EKG<br></h3>
-              </a>
-            </div>
-            <div class="slick-slide" data-slick-index="8" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1">
-                <%= image_tag("icons-15.svg",alt: "Physical Examinations icon") %>
-                <h3>Physical<br>Examinations</h3>
-              </a>
-            </div>
-            <div class="slick-slide" data-slick-index="9" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1">
-                <%= image_tag("icons-20.svg",alt: "Minor Procedures icon") %>
-                <h3>Minor<br>Procedures</h3>
-              </a>
-            </div>
-            <div class="slick-slide" data-slick-index="10" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1">
-                <%= image_tag("icons-18.svg",alt: "Suture &amp; Suture Removal icon") %>
-                <h3>Suture &amp;<br>Suture Removal</h3>
-              </a>
-            </div>
-            <div class="slick-slide" data-slick-index="11" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1">
-                <%= image_tag("icons-16.svg",alt: "Diabetic Education icon") %>
-                <h3>Diabetic<br>Education</h3>
-              </a>
-            </div>
-            <div class="slick-slide" data-slick-index="12" aria-hidden="true" style="width: 324px;" tabindex="-1">
-              <a href="#" tabindex="-1">
-                <%= image_tag("icons-17.svg",alt: "Ear Lavage icon") %>
-                <h3>Ear<br>Lavage</h3>
-              </a>
-            </div>
-          </div>
+      <div class="flexslider-services slides" id="flexslider-services" style="height: 300px">
+        <div >
+          <a href="#">
+            <%= image_tag("icons-11.svg",alt: "Lab Drawing Stations icon") %>
+            <h3>Lab Drawing<br>Stations</h3>
+          </a>
         </div>
-        <div class="flex-nav-next slick-arrow" style=""><span class="flex-next"></span>
+        <div >
+          <a href="#" >
+            <%= image_tag("icons-19.svg",alt: "Nebulizer Treatments icon") %>
+            <h3>Nebulizer<br>Treatments</h3>
+          </a>
+        </div>
+        <div >
+          <a href="#" >
+            <%= image_tag("icons-02.svg",alt: "Transportation icon") %>
+            <h3>Transportation</h3>
+          </a>
+        </div>
+        <div >
+          <a href="#">
+            <%= image_tag("icons-01.svg",alt: "Primary Care Physicians icon") %>
+            <h3>Primary Care<br>Physicians</h3>
+          </a>
+        </div>
+        <div >
+          <a href="#" >
+            <%= image_tag("icons-12.svg",alt: "Wound Care icon") %>
+            <h3>Wound<br>Care</h3>
+          </a>
+        </div>
+        <div >
+          <a href="#" >
+            <%= image_tag("icons-13.svg",alt: "Flu &amp; Pneumonia icon") %>
+            <h3>Flu &amp; Pneumonia<br>Vaccines</h3>
+          </a>
+        </div>
+        <div >
+          <a href="#" >
+            <%= image_tag("icons-14.svg",alt: "EKG icon") %>
+            <h3>EKG<br></h3>
+          </a>
+        </div>
+        <div >
+          <a href="#" >
+            <%= image_tag("icons-15.svg",alt: "Physical Examinations icon") %>
+            <h3>Physical<br>Examinations</h3>
+          </a>
+        </div>
+        <div>
+          <a href="#" >
+            <%= image_tag("icons-20.svg",alt: "Minor Procedures icon") %>
+            <h3>Minor<br>Procedures</h3>
+          </a>
+        </div>
+        <div >
+          <a href="#" >
+            <%= image_tag("icons-18.svg",alt: "Suture &amp; Suture Removal icon") %>
+            <h3>Suture &amp;<br>Suture Removal</h3>
+          </a>
+        </div>
+        <div >
+          <a href="#">
+            <%= image_tag("icons-16.svg",alt: "Diabetic Education icon") %>
+            <h3>Diabetic<br>Education</h3>
+          </a>
+        </div>
+        <div >
+          <a href="#" >
+            <%= image_tag("icons-17.svg",alt: "Ear Lavage icon") %>
+            <h3>Ear<br>Lavage</h3>
+          </a>
         </div>
       </div>
       <a href="#" class="styled-link" style="text-decoration: none;">View All</a>
@@ -217,36 +208,12 @@
     </div>
   </div>
 </div>
-
-
-
-
-<!-- <div class="modal fade" id="myModal" role="dialog" >
-          <div class="modal-dialog" role="document" >
-            <div class="modal-content " style="background-color: #1A1A1A">
-<div class="modal fade modal-location" id="myModal" role="dialog">
-
-    <div class="content-contain">
-
-        <div class="modal-body">
-
-
-                <p>Search for your location and set as default to quickly access your Care Center's information and homepage.</p>
-                <button class="styled-link current-locations modal-locations">Search by Current Location</button>
-                <a href="/go.php?u=aheEfb3JC9xf5MUpRbsx5ajkk7JE1RedqrxjGZFiOFjaDJaYBjq7q5Z7zVo%3D&amp;b=5" class="styled-link selected nearest-locations">Search all Locations</a>
-                    </div>
-    </div>
-</complementary> -->
-
-
-<!-- Conditionals for search RP -->
-
+<div class="shadow"></div>
 </main>
 
 
 <script type="text/javascript">
 
-  $(window).on('load', function() {$('.flexslider-services').flexslider({animation: "slide"})});
   function searchWithCurrentLocation(source){
     if (navigator.geolocation) {
       if(source === 'location') {
@@ -269,4 +236,56 @@
     window.location.replace(url);
   }
 
+  $(window).on('load', function() {$('.flexslider-services').flexslider({animation: "slide"})});
+
 </script>
+
+<script type="text/javascript">
+    
+$('a').css('text-decoration', 'none');
+  $(document).ready(function(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+    function showPosition(position) {
+      if (<%= session[:lat].blank?%> && <%= session[:long].blank?%> ) {
+        $.ajax({
+          type: "GET",
+          url: "/set_location",
+          data: {lat: position.coords.latitude, long: position.coords.longitude},
+          success: function (data) {},
+          error: function (e) {}
+        });
+      }
+    }
+  });
+
+    $(document).ready(function(){
+      jQuery.noConflict();
+      $(".modal_date").datepicker({dateFormat:"D M dd, yy"});
+    });
+
+    function searchWithCurrentLocation(source){
+      if (navigator.geolocation) {
+        if(source === 'location') {
+          navigator.geolocation.getCurrentPosition(searchCenterWithLocation);
+        } else {
+          navigator.geolocation.getCurrentPosition(searchPhysicianWithLocation);
+        }
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function searchCenterWithLocation(position) {
+      var url = "<%= root_url %>" + 'our_locations/search?lat=' + position.coords.latitude + '&long=' + position.coords.longitude;
+      window.location.replace(url);
+    }
+
+    function searchPhysicianWithLocation(position) {
+      var url = "<%= root_url %>" + 'physicians/search?lat=' + position.coords.latitude + '&long=' + position.coords.longitude;
+      window.location.replace(url);
+    }
+  </script>

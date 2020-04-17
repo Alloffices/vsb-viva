@@ -5,10 +5,9 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://use.fortawesome.com/3d1ec8f9.js"></script>
+    
     
   </head>
 
@@ -21,10 +20,11 @@
     <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
-       
+    <%= yield :page_scripts %>
   </body>
-<script>
-  $('a').css('text-decoration', 'none');
+  <script type="text/javascript">
+    
+$('a').css('text-decoration', 'none');
   $(document).ready(function(){
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
@@ -43,8 +43,7 @@
       }
     }
   });
-</script>
-  <script type="text/javascript">
+
     $(document).ready(function(){
       jQuery.noConflict();
       $(".modal_date").datepicker({dateFormat:"D M dd, yy"});
@@ -72,4 +71,5 @@
       window.location.replace(url);
     }
   </script>
+
 </html>

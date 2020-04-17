@@ -135,8 +135,24 @@
                     </div>
                     <div class="half gallery-slider">
                         <h3>Gallery</h3>
-                        <div>
-                            Gallery slider
+                        <div class="slider-for" id="gallery-slider" style="height: 400px">
+                            <div>
+                                <a  href="#" class="fa fa-fullscreen dt" ></a>
+                                <%= image_tag("one.jpg",alt: "Lab Drawing Stations icon",style:"width:300px;height:400px") %>
+                            </div>
+                            <div>
+                                <a  href="#" class="fa fa-fullscreen dt" ></a>
+                                <%= image_tag("two.jpg",alt: "Lab Drawing Stations icon",style:"width:300px;height:400px")%>
+                            </div>
+                        </div>
+                        <div class="slider-nav" id="sliderNav" style="height: 80px">
+                            <div>
+                                <%= image_tag("two2.jpg",alt: "Lab Drawing Stations icon",style:"width:80px;height:80px") %>
+                            </div>
+                            <div>
+                                <%= image_tag("one1.jpg",alt: "Lab Drawing Stations icon",style:"width:80px;height:80px") %>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -205,4 +221,75 @@
       $('.fc-scroller').css({'overflow':'visible'});
       console.log( "ready!" );
     });
+
+    $(window).on('load', function() {$('#sliderNav').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 210,
+        itemMargin: 5,
+        asNavFor: '#gallery-slider'
+    })});
+
+
+    $(window).on('load', function() {$('#gallery-slider').flexslider(
+    {
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        sync: "#sliderNav"
+    })});
+    
 </script>
+<script type="text/javascript">
+    
+$('a').css('text-decoration', 'none');
+  $(document).ready(function(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+    function showPosition(position) {
+      if (<%= session[:lat].blank?%> && <%= session[:long].blank?%> ) {
+        $.ajax({
+          type: "GET",
+          url: "/set_location",
+          data: {lat: position.coords.latitude, long: position.coords.longitude},
+          success: function (data) {},
+          error: function (e) {}
+        });
+      }
+    }
+  });
+
+    $(document).ready(function(){
+      jQuery.noConflict();
+      $(".modal_date").datepicker({dateFormat:"D M dd, yy"});
+    });
+
+    function searchWithCurrentLocation(source){
+      if (navigator.geolocation) {
+        if(source === 'location') {
+          navigator.geolocation.getCurrentPosition(searchCenterWithLocation);
+        } else {
+          navigator.geolocation.getCurrentPosition(searchPhysicianWithLocation);
+        }
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function searchCenterWithLocation(position) {
+      var url = "<%= root_url %>" + 'our_locations/search?lat=' + position.coords.latitude + '&long=' + position.coords.longitude;
+      window.location.replace(url);
+    }
+
+    function searchPhysicianWithLocation(position) {
+      var url = "<%= root_url %>" + 'physicians/search?lat=' + position.coords.latitude + '&long=' + position.coords.longitude;
+      window.location.replace(url);
+    }
+  </script>
+

@@ -8,6 +8,7 @@ class PhysiciansController < ApplicationController
     if params[:lat] and params[:long]
       @centers = Center.near([params[:lat], params[:long]], 50, units: :mi)
       @doctors = Doctor.joins(:center_doctors).where('center_doctors.center_id = ?', @centers.map{|c| c.id})
+      @location = Geocoder.search([params[:lat],params[:long]])
     else
       doctor_search = {}
       doctor_search['name_or_centers_city_or_centers_county_or_centers_state_or_centers_zip_code_cont'] = params["search"]

@@ -1,5 +1,6 @@
-/*
+//= require jquery
 //= require jquery3
+//= require rails-ujs
 //= require popper
 //= require jquery-ui
 //= require bootstrap
@@ -16,4 +17,4 @@
 //= require jquery.slick
 //= require ofi.browser
 //= require jquery-ui/widgets/datepicker
-*/
+

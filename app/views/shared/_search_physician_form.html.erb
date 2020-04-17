@@ -1,5 +1,5 @@
 <%= form_tag(search_physicians_path, method: :get) do %>
-  <%= text_field_tag :search, '', id: 'rockport-lookup', placeholder: "Enter Physician Name, Address, City, or Zip Code" %>
+  <%= text_field_tag :search, '', id: 'rockport-lookup1', placeholder: "Enter Physician Name, Address, City, or Zip Code" %>
   <button type="submit" class="styled-link selected nearest-locations" data-text-locations="Search Locations" data-text-physicians="Search Physicians">Search Physicians</button>
 <% end %>
 <button class="styled-link current-locations modal-locations" onclick="searchWithCurrentLocation('physician')">Search by Current Location</button>

@@ -47,3 +47,52 @@
   <div class="shadow"></div>
 </main>
 
+<script type="text/javascript">
+    
+$('a').css('text-decoration', 'none');
+  $(document).ready(function(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+    function showPosition(position) {
+      if (<%= session[:lat].blank?%> && <%= session[:long].blank?%> ) {
+        $.ajax({
+          type: "GET",
+          url: "/set_location",
+          data: {lat: position.coords.latitude, long: position.coords.longitude},
+          success: function (data) {},
+          error: function (e) {}
+        });
+      }
+    }
+  });
+
+    $(document).ready(function(){
+      jQuery.noConflict();
+      $(".modal_date").datepicker({dateFormat:"D M dd, yy"});
+    });
+
+    function searchWithCurrentLocation(source){
+      if (navigator.geolocation) {
+        if(source === 'location') {
+          navigator.geolocation.getCurrentPosition(searchCenterWithLocation);
+        } else {
+          navigator.geolocation.getCurrentPosition(searchPhysicianWithLocation);
+        }
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function searchCenterWithLocation(position) {
+      var url = "<%= root_url %>" + 'our_locations/search?lat=' + position.coords.latitude + '&long=' + position.coords.longitude;
+      window.location.replace(url);
+    }
+
+    function searchPhysicianWithLocation(position) {
+      var url = "<%= root_url %>" + 'physicians/search?lat=' + position.coords.latitude + '&long=' + position.coords.longitude;
+      window.location.replace(url);
+    }
+  </script>
