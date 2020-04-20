@@ -9,7 +9,7 @@
 
         <h2 class="modelheader" style="text-align:center;" >Request a Tour</h2>
         <p class="message"></p>
-        <%= render 'shared/request_appointment_form' %>
+        <%= render 'shared/tour_appointment_form' %>
         <p class="disclaimer">Please do not submit any sensitive medical information. If you are in need of medical
           attention, please see a physician or call 911 in case of a medical emergency.</p>
       </div>
@@ -30,10 +30,10 @@
 
             <div class="full">
 
-                <a href="#" class="share-google-calendar share-event styled-link selected no-wide" data-type="google"> Google</a>
-                <a href="#" class="share-icalendar share-event styled-link no-wide" data-type="icalendar">iCalendar</a>
-                <a href="#" class="share-outlook share-event styled-link no-wide" data-type="outlook">Outlook</a>
-                <a href="#" style="display: none;" id="open-google" target="_blank" aria-label="Auxiliar link to save event in Google Calendar"></a>
+                <a href="/centers/<%=@center.name%>" class="share-google-calendar share-event styled-link selected no-wide" data-type="google"> Google</a>
+                <a href="/centers/<%=@center.name%>" class="share-icalendar share-event styled-link no-wide" data-type="icalendar">iCalendar</a>
+                <a href="/centers/<%=@center.name%>" class="share-outlook share-event styled-link no-wide" data-type="outlook">Outlook</a>
+                <a href="/centers/<%=@center.name%>" style="display: none;" id="open-google" target="_blank" aria-label="Auxiliar link to save event in Google Calendar"></a>
             </div>
 
             <form method="post" action="share_icalendar" id="download-event-file">
@@ -69,7 +69,7 @@
                 <h3 >Address</h3>
                 <p class="bigger"><%= @center.address_1 %></p>
                 <p class="bigger"><%=@center.city%>,<%=@center.state%> <%=@center.zip_code%></p>
-                <a href="#" class="styled-link" target="_blank" style="text-decoration: none;">Get Directions</a>
+                <a href="https://www.google.com/maps/dir//<%=@center.full_address%><%=@center.state_zip_code%>" class="styled-link" target="_blank" style="text-decoration: none;">Get Directions</a>
             </div>
             <div class="center-info">
                 <%= image_tag("icons-08.svg", alt: "Center Hours Icon") %>
@@ -81,7 +81,7 @@
                 <p class="bigger bottom"><%= Center.format_time(t[t.keys.first][0]) %> - <%= Center.format_time(t[t.keys.first][1]) %></p>
               <% end %>
                 <button class="styled-link request-appointment" data-toggle="modal" data-target="#exampleModal021">Request a Tour</button>
-                <a href="#" class="styled-link" style="text-decoration: none;">Events Calendar</a>
+                <a href="#events" class="styled-link" style="text-decoration: none;">Events Calendar</a>
             </div>
             <div class="center-info">
                 <%= image_tag("icons-05.svg", alt: "Contact Icon") %>
@@ -90,7 +90,7 @@
                 <h3 >Contact</h3>
                 <p class="bigger"><%=@center.primary_phone%></p>
                 <p class="bigger">Fax: <%=@center.fax%></p>
-                <a href="#" class="styled-link" style="text-decoration: none;">Call Us</a>
+                <a href="tel:<%=@center.get_number @center.primary_phone%>" class="styled-link" style="text-decoration: none;">Call Us</a>
             </div>
         </div>
         <div class="sub-section">
@@ -130,7 +130,11 @@
                         <p><%=@center.center_admin%></p>
                         <div class="second-bg">
                             <h3> Insurances Accepted</h3>
-                            <div style="color:#0c495b;font-size:21px;line-height:30px;">We accept most Medicare Advantage plans, for more information please call <a href="tel:18332208654" style="text-decoration: none;">1-833-220-8654</a></div>
+                            <% unless @center.location_description.nil?%> 
+                              <div style="color:#0c495b;font-size:21px;line-height:30px;"><%=@center.location_description%></div>
+                            <%else%>
+                              <div style="color:#0c495b;font-size:21px;line-height:30px;">We accept most Medicare Advantage plans, for more information please call <a href="tel:18332208654" style="text-decoration: none;">1-833-220-8654</a></div>
+                            <%end%>
                         </div>
                     </div>
                     <div class="half gallery-slider">
@@ -291,5 +295,8 @@ $('a').css('text-decoration', 'none');
       var url = "<%= root_url %>" + 'physicians/search?lat=' + position.coords.latitude + '&long=' + position.coords.longitude;
       window.location.replace(url);
     }
+    $( ".choose-location" ).click(function() {
+  $('.modal-body').css({'display':'block'});
+});
   </script>
 

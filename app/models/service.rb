@@ -195,4 +195,22 @@ class Service < ApplicationRecord
 			end
 		end
 	end
+
+	def self.upload_users
+		CSV.foreach('./tmp/users.csv',:headers => true) do |user|
+			
+			if user[5] == "Event Admin"
+				role = "event_admin"
+			else
+				role = "event_creator"
+			end
+			User.create(first_name:user[1],last_name:user[2],email:user[3],password:user[4],role:role)
+		end
+	end
+	def self.update_pass
+		User.all.each do |user|
+			user.password="123456"
+			user.save
+		end
+	end
 end

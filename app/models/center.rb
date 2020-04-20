@@ -37,6 +37,7 @@ class Center < ApplicationRecord
   def state_zip_code
     [state,zip_code].reject{|r| r.blank?}.join(' ')
   end
+ 
 
   def get_timing
     timing = [{monday: [monday_hours, monday_ext_hours]}]
@@ -67,7 +68,9 @@ class Center < ApplicationRecord
   def self.format_time(time)
       time.strftime('%l:%M %P')
   end
-  def get_number
+  def get_number phone
+     number=phone.gsub(/[^0-9]/, '')
+      return number.to_i
   end
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_142520) do
+ActiveRecord::Schema.define(version: 2020_04_18_161548) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -224,6 +224,22 @@ ActiveRecord::Schema.define(version: 2020_04_15_142520) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "meet_physicians", force: :cascade do |t|
+    t.string "your_name"
+    t.string "email"
+    t.string "phone"
+    t.string "date"
+    t.string "time"
+    t.string "notes"
+    t.integer "contacted_via"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "center_id"
+    t.integer "physician_type_id"
+    t.index ["center_id"], name: "index_meet_physicians_on_center_id"
+    t.index ["physician_type_id"], name: "index_meet_physicians_on_physician_type_id"
+  end
+
   create_table "physician_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -296,5 +312,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_142520) do
   add_foreign_key "doctor_types", "doctors"
   add_foreign_key "doctor_types", "physician_types"
   add_foreign_key "doctors", "regions"
+  add_foreign_key "meet_physicians", "centers"
+  add_foreign_key "meet_physicians", "physician_types"
   add_foreign_key "users", "regions"
 end

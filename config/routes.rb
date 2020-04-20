@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :meet_physicians
   resources :tours
   resources :centers,param: :name ,only: [:show] do
     collection do

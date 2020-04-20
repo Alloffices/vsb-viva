@@ -1,0 +1,50 @@
+<%= form_for MeetPhysician.new   do |f| %>
+  <div class="row">
+    <%= f.text_field :your_name, class: 'required-input', placeholder: '* Your Name', 'aria-label': 'Your Name', style: 'width: 48%' %>
+    <%= f.text_field :email, class: 'required-input', placeholder: '* Email', 'aria-label': 'Your Email', style: 'width: 48%' %>
+    <%= f.text_field :phone, class: 'required-input', placeholder: '* Phone', 'aria-label': 'Your Email', style: 'width: 48%' %>
+    <%= f.text_field :date, class: 'required-input modal_date', placeholder: '* Date', 'aria-label': 'Your Date', style: 'width: 48%', autocomplete: 'off' %>
+
+    <div class="customize-select modal-show" data-visible="request_appointment,tour,meet_physician" id="modal_date_time" style="width: 98% !important; display: block;margin-bottom: 30px" >
+
+      <div class="select-wrapper">
+
+        <span class="current-selection">Any</span>
+        <ul>
+          <li class="option-selection" data-val="any">
+            <span>Any</span>
+          </li>
+
+          <li class="option-selection" data-val="morning">
+            <span>Morning</span>
+          </li>
+
+          <li class="option-selection" data-val="afternoon">
+            <span>Afternoon</span>
+          </li>
+        </ul>
+        <%= f.hidden_field :time, 'data-column':"modal_date_time",value: 'any' %>
+      </div>
+    </div>
+    <%= f.text_area :notes, row: 4, class: 'modal-show', placeholder: 'Notes', 'aria-label': 'Your Notes', 'data-visible':"request_appointment,tour,meet_physician", style: "display: block;" %>
+
+    <textarea name="modal_message" data-visible="leave_suggestion,more_information,other" class="modal-show" rows="4" placeholder="Message" style="display: none;"></textarea>
+
+    <fieldset class="modal-show" data-visible="request_appointment,leave_suggestion,tour,meet_physician,more_information" style="display: block;">
+      <legend style="margin-top: 10px;margin-bottom: 10px"><p>I would like to be contacted via</p></legend>
+      <input type="radio" name="appointment[contacted_via]" value="email" id="contacted_via_email"><label for="contacted_via_email">Via Email</label>
+      <input type="radio" name="appointment[contacted_via]" value="phone" id="contacted_via_phone"><label for="contacted_via_phone">Via Phone</label>
+    </fieldset>
+
+    <fieldset class="modal-show" data-visible="other" style="display: none;">
+      <input type="checkbox" name="modal_contact_me" id="modal_contact_me">
+      <legend style="margin-top: 10px;margin-bottom: 10px"><p>I would like somebody to contact me.</p></legend>
+      <input type="radio" name="appointment[contacted_via]" value="email" id="contacted_via_email1"><label for="contacted_via_email">Via Email</label>
+      <input type="radio" name="appointment[contacted_via]" value="phone" id="contacted_via_phone1"><label for="contacted_via_phone">Via Phone</label>
+    </fieldset>
+
+    <p class="disclaimer modal-show" data-visible="request_appointment,tour,meet_physician" id="action-requested" style="display: block;margin-top: 10px;margin-bottom: 10px">Please note we cannot guarantee the date/time you have selected. We will call or email you with availabilities and schedule your  <span>request</span>.</p>
+
+  </div>
+  <%= f.submit 'Submit', class: 'styled-link submit-appointment', style: "width: 95%;margin-bottom:10px",data:{turbolinks:"false"}%>
+<% end %>

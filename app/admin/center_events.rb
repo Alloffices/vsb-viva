@@ -27,7 +27,7 @@ ActiveAdmin.register CenterEvent do
   end
 
   batch_action :approve_selected,
-               if: proc { request.params['scope'] == 'my_pending_event' && current_user.role == 'SuperAdmin' } do |events_id|
+               if: proc { request.params['scope'] == 'my_pending_event' && !current_user.event_creator? } do |events_id|
     events_id.each do |event_id|
       event = CenterEvent.find(event_id)
       event.approved = 'approved'
@@ -43,7 +43,7 @@ ActiveAdmin.register CenterEvent do
       f.inputs "Center Event" do
         f.input :center
         f.input :created_by_id, as: :hidden, :input_html => { value: current_user.id}
-        f.input :admin, as: :select, collection: User.where(role: User.roles[:SuperAdmin])
+        f.input :admin, as: :select, collection: User.where(role: User.roles[:event_admin])
                                                    .map{ |user| [user.full_name, user.id]}
         f.input :title
         columns class: 'working-hours' do
@@ -58,7 +58,7 @@ ActiveAdmin.register CenterEvent do
           end
 
         end
-        if current_user.role != "Manager"
+        unless current_user.event_creator?
           f.input :approved
         end
         f.input :start_date, as: :datepicker, :input_html => { :value => (Date.current + 1.month)}

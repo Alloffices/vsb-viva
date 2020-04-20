@@ -1,6 +1,6 @@
 class CenterEvent < ApplicationRecord
   belongs_to :center
-  belongs_to :admin,-> {where(role: User.roles[:SuperAdmin])}, class_name: 'User', foreign_key: 'admin_id'
+  belongs_to :admin,-> {where(role: User.roles[:event_admin])}, class_name: 'User', foreign_key: 'admin_id'
   belongs_to :created_by, class_name: 'User', foreign_key: 'created_by_id'
   enum approved:[:pending,:approved]
   validates :title, :start_date, :end_date, :start_time, :end_time, :description, :created_by, presence:true

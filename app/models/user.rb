@@ -4,7 +4,7 @@ class User < ApplicationRecord
   
   has_many :admin_center_events, class_name: 'CenterEvent', foreign_key: 'admin_id'
   has_many :created_center_events, class_name: 'CenterEvent', foreign_key: 'created_by_id'
-  enum role:[:Manager,:SuperAdmin]
+  enum role:[:Manager,:SuperAdmin, :event_admin, :event_creator]
   validates :email , :first_name,:last_name,:role ,presence:true
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
